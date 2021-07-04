@@ -152,7 +152,11 @@ on boot
     chmod 0664 /sys/class/thermal/thermal_message/cpu_nolimit_temp
     chown system system /sys/class/thermal/thermal_message/cpu_nolimit_temp
     #END Thermal_NodeReq
-    
+
+    # Touch
+    chown system system /sys/devices/virtual/touch/touch_dev/bump_sample_rate
+    chmod 0664 /sys/devices/virtual/touch/touch_dev/bump_sample_rate
+
 on property:vendor.display.lcd_density=560
    setprop dalvik.vm.heapgrowthlimit 256m
 
