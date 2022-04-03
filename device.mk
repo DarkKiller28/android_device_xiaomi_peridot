@@ -23,6 +23,12 @@ $(call inherit-product, packages/modules/Virtualization/apex/product_packages.mk
 $(call soong_config_set,rfs,mpss_firmware_symlink_target,modem_firmware)
 $(call inherit-product, hardware/qcom-caf/common/common.mk)
 
+# Call the MiuiCamera setup
+$(call inherit-product-if-exists, device/xiaomi/peridot-miuicamera/device.mk)
+
+# Reduce system server verbosity
+PRODUCT_SYSTEM_SERVER_DEBUG_INFO := false
+
 # A/B
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
