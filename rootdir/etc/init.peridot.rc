@@ -28,6 +28,10 @@ on boot
     # Create persist for camera calibration data
     mkdir /mnt/vendor/persist/camera 0755 system cameraserver
 
+    # Workarround for cache
+    rm /data/resource-cache
+    rm /data/system/package_cache
+
     # Display feature sysfs node
     chown system system /sys/class/mi_display/disp-DSI-0/disp_param
     chmod 0664 /sys/class/mi_display/disp-DSI-0/disp_param
