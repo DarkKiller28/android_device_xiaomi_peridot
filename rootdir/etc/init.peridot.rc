@@ -254,6 +254,10 @@ on property:persist.vendor.ssr.restart_level=ALL_ENABLE
 on property:persist.vendor.ssr.restart_level=ALL_DISABLE
     write /sys/kernel/cnss/recovery 0
 
+    # CPUSets
+    setprop dalvik.vm.dex2oat-cpu-set 0,1,2,3,4,5,6
+    setprop dalvik.vm.dex2oat-threads 6
+
 on property:sys.boot_completed=1
     # KGSL
     chown system system /sys/class/kgsl/kgsl-3d0/devfreq/max_freq
