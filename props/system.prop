@@ -16,3 +16,6 @@ renderthread.skia.reduceopstasksplitting=true
 
 # Disable vsync for cpu rendered apps
 debug.cpurend.vsync=false
+
+# Radio VoNR Calling
+persist.rcs.supported=1
