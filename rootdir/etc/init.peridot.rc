@@ -278,6 +278,15 @@ service vendor.qti.hardware.display.composer /vendor/bin/hw/vendor.qti.hardware.
     socket pps stream 0660 system system
     task_profiles ProcessCapacityHigh HighPerformance
 
+service vendor.qti.hardware.display.allocator /vendor/bin/hw/vendor.qti.hardware.display.allocator-service
+    override
+    class hal animation
+    user system
+    group graphics drmrpc
+    capabilities SYS_NICE
+    onrestart restart surfaceflinger
+    task_profiles ProcessCapacityHigh HighPerformance
+
 on property:sys.perf_mode_active=2
     write /sys/devices/system/cpu/qcom_lpm/parameters/sleep_disabled 1
     
