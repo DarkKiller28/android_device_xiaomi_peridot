@@ -268,6 +268,16 @@ service vendor.sensors-hal-multihal /vendor/bin/hw/android.hardware.sensors-serv
     capabilities BLOCK_SUSPEND
     rlimit rtprio 10 10
 
+service vendor.qti.hardware.display.composer /vendor/bin/hw/vendor.qti.hardware.display.composer-service
+    override
+    class hal animation
+    user system
+    group graphics drmrpc
+    capabilities SYS_NICE
+    onrestart restart surfaceflinger
+    socket pps stream 0660 system system
+    task_profiles ProcessCapacityHigh HighPerformance
+
 on property:sys.perf_mode_active=2
     write /sys/devices/system/cpu/qcom_lpm/parameters/sleep_disabled 1
     
