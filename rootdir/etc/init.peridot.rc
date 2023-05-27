@@ -216,6 +216,59 @@ on property:persist.vendor.ssr.restart_level=ALL_ENABLE
 on property:persist.vendor.ssr.restart_level=ALL_DISABLE
     write /sys/kernel/cnss/recovery 0
 
+on property:vendor.post_boot.parsed=1
+    # Setup runtime cpus
+    write /dev/cpuset/background/cpus 0-1
+    write /dev/cpuset/restricted/cpus 0-3
+    write /dev/cpuset/foreground/cpus 0-6
+
+    # CPU Freq Tuning
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 364800
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 364800
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 364800
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 480000
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 480000
+    write /sys/devices/system/cpu/cpu5/cpufreq/scaling_min_freq 480000
+    write /sys/devices/system/cpu/cpu6/cpufreq/scaling_min_freq 480000  
+    write /sys/devices/system/cpu/cpu7/cpufreq/scaling_min_freq 480000
+
+    # IRQ Tuning
+    # IRQ 70: msm_drm0
+    # IRQ 222: kgsl_3d0_irq
+    write /proc/irq/70/smp_affinity_list 7
+    write /proc/irq/222/smp_affinity_list 6
+    # Battery Saving Tweak
+    write /proc/sys/kernel/perf_cpu_time_max_percent 15
+    write /proc/sys/vm/dirty_writeback_centisecs 1300
+    write /proc/sys/vm/dirty_ratio 10
+    write /proc/sys/vm/dirty_background_ratio 5
+    write /proc/sys/vm/stat_interval 1
+    write /proc/sys/vm/swappiness 70
+
+    # Configure uclamp
+    write /dev/cpuctl/top-app/cpu.uclamp.latency_sensitive 1
+
+    # CPUSets
+    setprop dalvik.vm.dex2oat-cpu-set 0,1,2,3,4,5,6,7
+    setprop dalvik.vm.dex2oat-threads 8
+
+    # Uclamp tuning
+    write /dev/cpuctl/top-app/cpu.uclamp.min 24
+    write /dev/cpuctl/top-app/cpu.uclamp.latency_sensitive 1
+    write /dev/cpuctl/foreground/cpu.uclamp.min 8
+    write /dev/cpuctl/foreground/cpu.uclamp.latency_sensitive 1
+    write /dev/cpuctl/background/cpu.uclamp.min 0
+    write /dev/cpuctl/background/cpu.uclamp.latency_sensitive 0
+
+    # Schedutil/WALT tuning
+    write /proc/sys/walt/sched_upmigrate "90 100"
+    write /proc/sys/walt/sched_downmigrate "75 90"
+    write /proc/sys/walt/sched_min_task_util_for_uclamp 0
+    write /proc/sys/walt/sched_busy_hyst_ns 10000000
+
+    # Disable multiple kswapd threads
+    write /proc/sys/vm/kswapd_threads 1
+
 on property:sys.boot_completed=1
     write /dev/kmsg "start qrtr-lookup after Boot completed "
     start qrtr-lookup
