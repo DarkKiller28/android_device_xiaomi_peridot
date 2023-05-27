@@ -401,6 +401,9 @@ on property:vendor.post_boot.parsed=1
     write /proc/sys/vm/stat_interval 1
     write /proc/sys/vm/swappiness 70
 
+    # Configure uclamp
+    write /dev/cpuctl/top-app/cpu.uclamp.latency_sensitive 1
+
     # CPUSets
     setprop dalvik.vm.dex2oat-cpu-set 0,1,2,3,4,5,6,7
     setprop dalvik.vm.dex2oat-threads 8
