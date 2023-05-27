@@ -325,6 +325,9 @@ on property:vendor.post_boot.parsed=1
     # Disable multiple kswapd threads
     write /proc/sys/vm/kswapd_threads 1
 
+    # Disable multiple kswapd threads
+    write /proc/sys/vm/kswapd_threads 1
+
 on property:sys.boot_completed=1
     write /dev/kmsg "start qrtr-lookup after Boot completed "
     start qrtr-lookup
