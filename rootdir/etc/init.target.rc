@@ -210,3 +210,6 @@ service fan_control_turn_off /vendor/bin/fan_service 0
     user root
     disabled
     oneshot
+
+    # Only owner can acces this node
+    chmod 440 /proc/net/unix
