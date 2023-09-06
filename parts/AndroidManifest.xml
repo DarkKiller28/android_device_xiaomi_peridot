@@ -168,5 +168,11 @@
             </intent-filter>
         </service>
 
+        <!-- Displayfeature color service -->
+        <service
+            android:name=".display.ColorModeService"
+            android:permission="ColorModeService">
+        </service>
+
     </application>
 </manifest>
