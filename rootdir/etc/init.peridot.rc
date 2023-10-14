@@ -279,6 +279,12 @@ on property:vendor.post_boot.parsed=1
     write /dev/cpuset/restricted/cpus 0-3
     write /dev/cpuset/foreground/cpus 0-6
 
+    # IRQ Tuning
+    # IRQ 70: msm_drm0
+    # IRQ 222: kgsl_3d0_irq
+    write /proc/irq/70/smp_affinity_list 7
+    write /proc/irq/222/smp_affinity_list 6
+
     # CPU Freq Tuning
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 364800
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 364800
@@ -286,14 +292,9 @@ on property:vendor.post_boot.parsed=1
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 480000
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 480000
     write /sys/devices/system/cpu/cpu5/cpufreq/scaling_min_freq 480000
-    write /sys/devices/system/cpu/cpu6/cpufreq/scaling_min_freq 480000  
+    write /sys/devices/system/cpu/cpu6/cpufreq/scaling_min_freq 480000
     write /sys/devices/system/cpu/cpu7/cpufreq/scaling_min_freq 480000
 
-    # IRQ Tuning
-    # IRQ 70: msm_drm0
-    # IRQ 222: kgsl_3d0_irq
-    write /proc/irq/70/smp_affinity_list 7
-    write /proc/irq/222/smp_affinity_list 6
     # Battery Saving Tweak
     write /proc/sys/kernel/perf_cpu_time_max_percent 15
     write /proc/sys/vm/dirty_writeback_centisecs 1300
