@@ -191,6 +191,7 @@ ro.vendor.perf-hal.ver=3.0
 ro.vendor.perf.scroll_opt=1
 vendor.perf.framepacing.enable=1
 debug.sf.enable_adpf_cpu_hint=true
+vendor.perf.framepacing.enable=1
 
 # QCOM
 ro.soc.manufacturer=QTI
