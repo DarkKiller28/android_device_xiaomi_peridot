@@ -19,3 +19,6 @@ debug.cpurend.vsync=false
 
 # Radio VoNR Calling
 persist.rcs.supported=1
+persist.radio.is_vonr_enabled_0=true
+persist.radio.is_vonr_enabled_1=true
+persist.vendor.vonr_setting_support=1
