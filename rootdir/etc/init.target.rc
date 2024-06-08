@@ -71,6 +71,7 @@ on init
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
     chown system system /sys/devices/platform/soc/1d84000.ufshc/auto_hibern8
     chmod 0660 /sys/devices/platform/soc/1d84000.ufshc/auto_hibern8
+    write /sys/block/sda/queue/iosched/group_idle 0
     start logd
     mkdir /dev/cpuctl/general
     copy_per_line /dev/cpuctl/tasks /dev/cpuctl/general/tasks
