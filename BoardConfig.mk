@@ -82,6 +82,7 @@ ODM_MANIFEST_FILES := $(DEVICE_PATH)/configs/hidl/manifest_odm.xml
 
 # HWUI
 TARGET_USES_VULKAN := true
+HWUI_COMPILE_FOR_PERF := true
 
 # Kernel
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
