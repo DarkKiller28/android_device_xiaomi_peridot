@@ -132,6 +132,27 @@ on boot
     chown system /sys/devices/system/cpu/hyp_core_ctl/enable
     chown system /sys/devices/system/cpu/hyp_core_ctl/hcc_min_freq
 
+    #MIUI ADD:Thermal_NodeReq
+    chmod 0664 /sys/class/thermal/thermal_message/sconfig
+    chown system system /sys/class/thermal/thermal_message/sconfig
+    chmod 0664 /sys/class/thermal/thermal_message/balance_mode
+    chown system system /sys/class/thermal/thermal_message/balance_mode
+    chmod 0664 /sys/class/thermal/thermal_message/torch_real_level
+    chown cameraserver cameraserver /sys/class/thermal/thermal_message/torch_real_level
+    chmod 0664 /sys/class/thermal/thermal_message/flash_state
+    chown cameraserver cameraserver /sys/class/thermal/thermal_message/flash_state
+    chmod 0664 /sys/class/thermal/thermal_message/charger_temp
+    chown system system /sys/class/thermal/thermal_message/charger_temp
+    chmod 0664 /sys/class/thermal/power_save/powersave_mode
+    chown system system /sys/class/thermal/power_save/powersave_mode
+    chmod 0664 /sys/class/thermal/power_save/power_level
+    chown system system /sys/class/thermal/power_save/power_level
+    chmod 0664 /sys/class/thermal/thermal_message/board_sensor_temp_comp
+    chown system system /sys/class/thermal/thermal_message/board_sensor_temp_comp
+    chmod 0664 /sys/class/thermal/thermal_message/cpu_nolimit_temp
+    chown system system /sys/class/thermal/thermal_message/cpu_nolimit_temp
+    #END Thermal_NodeReq
+    
 on property:vendor.display.lcd_density=560
    setprop dalvik.vm.heapgrowthlimit 256m
 
