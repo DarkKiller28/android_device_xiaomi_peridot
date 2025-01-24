@@ -6,6 +6,7 @@
 
 package org.lineageos.settings.thermal;
 
+import android.os.SystemProperties;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 
@@ -19,6 +20,8 @@ public class ThermalProfileTileService extends TileService {
     private static final int THERMAL_PROFILE_DEFAULT = 0;
     private static final int THERMAL_PROFILE_MBATTERY = 1;
     private static final int THERMAL_PROFILE_MPERFORMANCE = 6;
+
+    private static final String SYS_PROP = "sys.perf_mode_active";
 
     private void updateUI(int profile) {
         Tile tile = getQsTile();
@@ -61,7 +64,7 @@ public class ThermalProfileTileService extends TileService {
         super.onClick();
         int currentProfile = FileUtils.readLineInt(THERMAL_PROFILE_PATH);
 
-        // Cycle through profiles: DEFAULT → BATTERY → PERFORMANCE → GAME → DEFAULT ...
+        // Cycle through profiles: DEFAULT → BATTERY → PERFORMANCE → DEFAULT ...
         int newProfile;
         switch (currentProfile) {
             case THERMAL_PROFILE_DEFAULT:
@@ -77,6 +80,13 @@ public class ThermalProfileTileService extends TileService {
         }
 
         FileUtils.writeLine(THERMAL_PROFILE_PATH, newProfile);
+
+        if (newProfile == THERMAL_PROFILE_MPERFORMANCE) {
+            SystemProperties.set(SYS_PROP, "1");  // Disable LPM
+        } else {
+            SystemProperties.set(SYS_PROP, "0");  // Enable LPM
+        }
+
         updateUI(newProfile);
     }
 }
