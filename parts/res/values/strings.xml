@@ -33,6 +33,13 @@
     <string name="powerprofile_battery">Battery Saver</string>
     <string name="powerprofile_unknown">Unknown</string>
 
+     <!-- Performance Mode Notification -->
+     <string name="perf_mode_title">Performance Mode</string>
+     <string name="perf_mode_notification">Performance mode is active. Tap to open settings.</string>
+
+     <!-- Tile Disabled -->
+     <string name="power_tile_disabled_subtitle">Disabled</string>
+
     <!-- Refresh rate -->
     <string name="refresh_title">Refresh rate</string>
     <string name="refresh_summary">Set the maximum refresh rate for a specific application</string>
