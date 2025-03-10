@@ -605,8 +605,9 @@ subsystem mem_buf_vm
 # Q2SPI UWB device
 /dev/q2spiuwb    0660    uwb    uwb
 
-# RemoteProc state
-/sys/class/remoteproc/remoteproc*   state    0660    root  system
+# RemoteProc attributes
+/sys/class/remoteproc/remoteproc*   state     0660    root  system
+/sys/class/remoteproc/remoteproc*   recovery  0660    root  system
 
 # Battery
 /sys/class/qcom-battery                                 input_suspend                   0660    system  system
