@@ -462,6 +462,8 @@ on property:persist.vendor.qcomsysd.enabled=0
     stop qcomsysd
 
 service vendor.ssr_setup /system/vendor/bin/ssr_setup
+    user system
+    group system
     oneshot
     disabled
 
