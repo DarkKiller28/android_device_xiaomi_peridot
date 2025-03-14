@@ -933,6 +933,7 @@ on property:vendor.chre.enabled=0
 
 service bugreport /system/bin/dumpstate -d -p -B -z -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
     class main
+    user root
     disabled
     oneshot
     keycodes 114 115 116
