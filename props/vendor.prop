@@ -24,6 +24,7 @@ vendor.audio.compress_capture.enabled=true
 vendor.audio.feature.a2dp_offload.enable=true
 vendor.audio.feature.afe_proxy.enable=true
 vendor.audio.feature.battery_listener.enable=true
+vendor.audio.feature.compr_voip.enable=true
 vendor.audio.feature.dmabuf.cma.memory.enable=false
 vendor.audio.feature.hfp.enable=true
 vendor.audio.feature.kpi_optimize.enable=true
