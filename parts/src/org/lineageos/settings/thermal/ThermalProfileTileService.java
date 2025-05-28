@@ -19,7 +19,6 @@ public class ThermalProfileTileService extends TileService {
     private static final int THERMAL_PROFILE_DEFAULT = 0;
     private static final int THERMAL_PROFILE_MBATTERY = 1;
     private static final int THERMAL_PROFILE_MPERFORMANCE = 6;
-    private static final int THERMAL_PROFILE_MGAME = 19;
 
     private void updateUI(int profile) {
         Tile tile = getQsTile();
@@ -35,9 +34,6 @@ public class ThermalProfileTileService extends TileService {
                     break;
                 case THERMAL_PROFILE_MPERFORMANCE:
                     subtitle = getString(R.string.thermalprofile_performance);
-                    break;
-                case THERMAL_PROFILE_MGAME:
-                    subtitle = getString(R.string.thermalprofile_game);
                     break;
                 default:
                     subtitle = getString(R.string.thermalprofile_unknown);
@@ -75,9 +71,6 @@ public class ThermalProfileTileService extends TileService {
                 newProfile = THERMAL_PROFILE_MPERFORMANCE;
                 break;
             case THERMAL_PROFILE_MPERFORMANCE:
-                newProfile = THERMAL_PROFILE_MGAME;
-                break;
-            case THERMAL_PROFILE_MGAME:
             default:
                 newProfile = THERMAL_PROFILE_DEFAULT;
                 break;
