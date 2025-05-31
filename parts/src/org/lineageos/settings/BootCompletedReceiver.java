@@ -34,7 +34,6 @@ import android.view.Display.HdrCapabilities;
 
 import org.lineageos.settings.doze.DozeUtils;
 import org.lineageos.settings.display.ColorModeService;
-import org.lineageos.settings.thermal.ThermalUtils;
 import org.lineageos.settings.refreshrate.RefreshUtils;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
@@ -81,9 +80,6 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         
         // Start Color Mode Service
         context.startServiceAsUser(new Intent(context, ColorModeService.class), UserHandle.CURRENT);
-
-        // Start Thermal Management Services
-        ThermalUtils.getInstance(context).startService();
 
         // Start Refresh Rate Service
         RefreshUtils.startService(context);
