@@ -75,9 +75,9 @@
         </receiver>
 
         <service
-            android:name=".thermal.ThermalProfileTileService"
-            android:icon="@drawable/ic_thermal_tile"
-            android:label="@string/thermalprofile_title"
+            android:name=".power.PowerProfileTileService"
+            android:icon="@drawable/ic_power_default"
+            android:label="@string/powerprofile_title"
             android:exported="true"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>

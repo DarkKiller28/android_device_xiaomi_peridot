@@ -26,12 +26,12 @@
     <string name="tile_on">On</string>
     <string name="tile_off">Off</string>
 
-     <!-- Thermal Profile tiles-->
-    <string name="thermalprofile_title">Thermal profile</string>
-    <string name="thermalprofile_default">Default</string>
-    <string name="thermalprofile_performance">Performance</string>
-    <string name="thermalprofile_battery">Battery Saver</string>
-    <string name="thermalprofile_unknown">Unknown</string>
+     <!-- Power Profile tiles-->
+    <string name="powerprofile_title">Power Profile</string>
+    <string name="powerprofile_default">Default</string>
+    <string name="powerprofile_performance">Performance</string>
+    <string name="powerprofile_battery">Battery Saver</string>
+    <string name="powerprofile_unknown">Unknown</string>
 
     <!-- Refresh rate -->
     <string name="refresh_title">Refresh rate</string>

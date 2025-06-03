@@ -3,8 +3,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-
-package org.lineageos.settings.thermal;
+package org.lineageos.settings.power;
 
 import android.os.SystemProperties;
 import android.service.quicksettings.Tile;
@@ -13,33 +12,33 @@ import android.service.quicksettings.TileService;
 import org.lineageos.settings.R;
 import org.lineageos.settings.utils.FileUtils;
 
-public class ThermalProfileTileService extends TileService {
+public class PowerProfileTileService extends TileService {
 
-    private static final String THERMAL_PROFILE_PATH = "/sys/class/thermal/thermal_message/sconfig";
+    private static final String POWER_PROFILE_PATH = "/sys/class/thermal/thermal_message/sconfig";
     
-    private static final int THERMAL_PROFILE_DEFAULT = 0;
-    private static final int THERMAL_PROFILE_MBATTERY = 1;
-    private static final int THERMAL_PROFILE_MPERFORMANCE = 6;
+    private static final int POWER_PROFILE_DEFAULT = 0;
+    private static final int POWER_PROFILE_MBATTERY = 1;
+    private static final int POWER_PROFILE_MPERFORMANCE = 6;
 
     private static final String SYS_PROP = "sys.perf_mode_active";
 
     private void updateUI(int profile) {
         Tile tile = getQsTile();
         if (tile != null) {
-            tile.setLabel(getString(R.string.thermalprofile_title));
+            tile.setLabel(getString(R.string.powerprofile_title));
             String subtitle;
             switch (profile) {
-                case THERMAL_PROFILE_DEFAULT:
-                    subtitle = getString(R.string.thermalprofile_default);
+                case POWER_PROFILE_DEFAULT:
+                    subtitle = getString(R.string.powerprofile_default);
                     break;
-                case THERMAL_PROFILE_MBATTERY:
-                    subtitle = getString(R.string.thermalprofile_battery);
+                case POWER_PROFILE_MBATTERY:
+                    subtitle = getString(R.string.powerprofile_battery);
                     break;
-                case THERMAL_PROFILE_MPERFORMANCE:
-                    subtitle = getString(R.string.thermalprofile_performance);
+                case POWER_PROFILE_MPERFORMANCE:
+                    subtitle = getString(R.string.powerprofile_performance);
                     break;
                 default:
-                    subtitle = getString(R.string.thermalprofile_unknown);
+                    subtitle = getString(R.string.powerprofile_unknown);
             }
             tile.setSubtitle(subtitle);
             tile.setState(Tile.STATE_ACTIVE);
@@ -50,7 +49,7 @@ public class ThermalProfileTileService extends TileService {
     @Override
     public void onStartListening() {
         super.onStartListening();
-        int profile = FileUtils.readLineInt(THERMAL_PROFILE_PATH);
+        int profile = FileUtils.readLineInt(POWER_PROFILE_PATH);
         updateUI(profile);
     }
 
@@ -62,26 +61,26 @@ public class ThermalProfileTileService extends TileService {
     @Override
     public void onClick() {
         super.onClick();
-        int currentProfile = FileUtils.readLineInt(THERMAL_PROFILE_PATH);
+        int currentProfile = FileUtils.readLineInt(POWER_PROFILE_PATH);
 
         // Cycle through profiles: DEFAULT → BATTERY → PERFORMANCE → DEFAULT ...
         int newProfile;
         switch (currentProfile) {
-            case THERMAL_PROFILE_DEFAULT:
-                newProfile = THERMAL_PROFILE_MBATTERY;
+            case POWER_PROFILE_DEFAULT:
+                newProfile = POWER_PROFILE_MBATTERY;
                 break;
-            case THERMAL_PROFILE_MBATTERY:
-                newProfile = THERMAL_PROFILE_MPERFORMANCE;
+            case POWER_PROFILE_MBATTERY:
+                newProfile = POWER_PROFILE_MPERFORMANCE;
                 break;
-            case THERMAL_PROFILE_MPERFORMANCE:
+            case POWER_PROFILE_MPERFORMANCE:
             default:
-                newProfile = THERMAL_PROFILE_DEFAULT;
+                newProfile = POWER_PROFILE_DEFAULT;
                 break;
         }
 
-        FileUtils.writeLine(THERMAL_PROFILE_PATH, newProfile);
+        FileUtils.writeLine(POWER_PROFILE_PATH, newProfile);
 
-        if (newProfile == THERMAL_PROFILE_MPERFORMANCE) {
+        if (newProfile == POWER_PROFILE_MPERFORMANCE) {
             SystemProperties.set(SYS_PROP, "1");  // Disable LPM
         } else {
             SystemProperties.set(SYS_PROP, "0");  // Enable LPM
