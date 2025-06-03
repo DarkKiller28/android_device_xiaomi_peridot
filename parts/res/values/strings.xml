@@ -81,4 +81,12 @@
     <string name="htsr_enable_summary">Increases touch polling rate to decrease latency</string>
     <string name="touch_sampling_tile_label">Touch Boost</string>
 
+     <!-- Per-App High Touch Polling -->
+     <string name="per_app_htsr_title">Per-App Touch Boost</string>
+     <string name="per_app_htsr_summary">Enable touch boost for specific applications</string>
+     <string name="show_system_apps">Show system apps</string>
+     <string name="hide_system_apps">Hide system apps</string>
+     <string name="loading_apps">Loading applications...</string>
+     <string name="no_apps_found">No applications found</string>    
+
 </resources>

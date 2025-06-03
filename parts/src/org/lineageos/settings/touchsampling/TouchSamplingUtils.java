@@ -23,10 +23,16 @@ import android.util.Log;
 
 import org.lineageos.settings.utils.FileUtils;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public final class TouchSamplingUtils {
 
     private static final String TAG = "TouchSamplingUtils";
     public static final String HTSR_FILE = "/sys/devices/virtual/touch/touch_dev/bump_sample_rate";
+
+    // Per-app HTSR preferences
+    public static final String PER_APP_HTSR_ENABLED_APPS = "per_app_htsr_enabled_apps";
 
     public static void restoreSamplingValue(Context context) {
         SharedPreferences sharedPref = context.getSharedPreferences(
@@ -53,5 +59,33 @@ public final class TouchSamplingUtils {
             }
         }
         return 0; // Default to disabled
+    }
+
+    // Per-app HTSR methods
+    public static boolean isPerAppHtsrEnabled(Context context, String packageName) {
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                TouchSamplingSettingsFragment.SHAREDHTSR, Context.MODE_PRIVATE);
+        Set<String> enabledApps = sharedPref.getStringSet(PER_APP_HTSR_ENABLED_APPS, new HashSet<>());
+        return enabledApps.contains(packageName);
+    }
+
+    public static void setPerAppHtsrEnabled(Context context, String packageName, boolean enabled) {
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                TouchSamplingSettingsFragment.SHAREDHTSR, Context.MODE_PRIVATE);
+        Set<String> enabledApps = new HashSet<>(sharedPref.getStringSet(PER_APP_HTSR_ENABLED_APPS, new HashSet<>()));
+        
+        if (enabled) {
+            enabledApps.add(packageName);
+        } else {
+            enabledApps.remove(packageName);
+        }
+        
+        sharedPref.edit().putStringSet(PER_APP_HTSR_ENABLED_APPS, enabledApps).apply();
+    }
+
+    public static Set<String> getPerAppHtsrEnabledApps(Context context) {
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                TouchSamplingSettingsFragment.SHAREDHTSR, Context.MODE_PRIVATE);
+        return new HashSet<>(sharedPref.getStringSet(PER_APP_HTSR_ENABLED_APPS, new HashSet<>()));
     }
 }

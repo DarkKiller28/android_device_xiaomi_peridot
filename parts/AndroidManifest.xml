@@ -209,6 +209,13 @@
             </intent-filter>
         </service>
 
+        <!-- Per-App Touch Sampling Activity -->
+        <activity
+            android:name=".touchsampling.TouchSamplingPerAppActivity"
+            android:label="@string/per_app_htsr_title"
+            android:theme="@style/Theme.SubSettingsBase"
+            android:exported="false" />        
+
         <!-- Tile Entry Activity -->
          <activity
              android:name=".TileEntryActivity"

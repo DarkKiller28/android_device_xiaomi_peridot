@@ -22,4 +22,10 @@
         android:summary="@string/htsr_enable_summary"
         android:title="@string/htsr_enable_title"
         android:showDefault="false" />
+        
+    <Preference
+        android:key="per_app_htsr"
+        android:title="@string/per_app_htsr_title"
+        android:summary="@string/per_app_htsr_summary" />
+
 </PreferenceScreen>
