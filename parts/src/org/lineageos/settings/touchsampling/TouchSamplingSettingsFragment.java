@@ -16,22 +16,17 @@
 
 package org.lineageos.settings.touchsampling;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.SwitchPreference;
 
 import org.lineageos.settings.R;
-import org.lineageos.settings.touchsampling.TouchSamplingUtils;
-import org.lineageos.settings.utils.FileUtils;
 
 public class TouchSamplingSettingsFragment extends PreferenceFragment implements
         Preference.OnPreferenceChangeListener {
@@ -47,20 +42,17 @@ public class TouchSamplingSettingsFragment extends PreferenceFragment implements
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.htsr_settings);
         getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+        
         mHTSRPreference = (SwitchPreference) findPreference(HTSR_ENABLE_KEY);
         mPrefs = getActivity().getSharedPreferences(SHAREDHTSR, Context.MODE_PRIVATE);
 
-        // Set the initial state of the switch
+        // Initialize switch state
         boolean htsrEnabled = mPrefs.getBoolean(HTSR_STATE, false);
         mHTSRPreference.setChecked(htsrEnabled);
-
-        // Enable the switch and set its listener
         mHTSRPreference.setOnPreferenceChangeListener(this);
 
-        // Start the service if the toggle is enabled
-        if (htsrEnabled) {
-            startTouchSamplingService(true);
-        }
+        // Ensure service state matches preference
+        controlTouchSamplingService(htsrEnabled);
     }
 
     @Override
@@ -68,16 +60,17 @@ public class TouchSamplingSettingsFragment extends PreferenceFragment implements
         if (HTSR_ENABLE_KEY.equals(preference.getKey())) {
             boolean isEnabled = (Boolean) newValue;
 
-            // Save the state in shared preferences
+            // Save state
             mPrefs.edit().putBoolean(HTSR_STATE, isEnabled).apply();
 
-            // Start or stop the service based on the toggle state
-            startTouchSamplingService(isEnabled);
+            // Control service and hardware
+            controlTouchSamplingService(isEnabled);
+            TouchSamplingUtils.writeTouchSamplingState(isEnabled ? 1 : 0);
         }
         return true;
     }
 
-    private void startTouchSamplingService(boolean enable) {
+    private void controlTouchSamplingService(boolean enable) {
         Intent serviceIntent = new Intent(getActivity(), TouchSamplingService.class);
         if (enable) {
             getActivity().startService(serviceIntent);

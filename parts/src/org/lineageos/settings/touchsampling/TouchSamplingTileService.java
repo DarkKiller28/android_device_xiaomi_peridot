@@ -25,8 +25,6 @@ import android.service.quicksettings.TileService;
 import android.util.Log;
 
 import org.lineageos.settings.R;
-import org.lineageos.settings.touchsampling.TouchSamplingUtils;
-import org.lineageos.settings.utils.FileUtils;
 
 public class TouchSamplingTileService extends TileService {
 
@@ -74,10 +72,10 @@ public class TouchSamplingTileService extends TileService {
         boolean currentState = isTouchSamplingEnabled();
         boolean newState = !currentState;
 
-        // Update SharedPreferences
+        // Save state to SharedPreferences
         saveTouchSamplingState(newState);
 
-        // Start or stop the service
+        // Control service
         Intent serviceIntent = new Intent(this, TouchSamplingService.class);
         if (newState) {
             startService(serviceIntent);
@@ -85,8 +83,8 @@ public class TouchSamplingTileService extends TileService {
             stopService(serviceIntent);
         }
 
-        // Update the state in the file
-        writeTouchSamplingStateToFile(newState ? 1 : 0);
+        // Write to hardware file
+        TouchSamplingUtils.writeTouchSamplingState(newState ? 1 : 0);
     }
 
     private boolean isTouchSamplingEnabled() {
@@ -101,12 +99,6 @@ public class TouchSamplingTileService extends TileService {
         sharedPref.edit().putBoolean(TouchSamplingSettingsFragment.HTSR_STATE, state).apply();
     }
 
-    private void writeTouchSamplingStateToFile(int state) {
-        if (!FileUtils.writeLine(TouchSamplingUtils.HTSR_FILE, Integer.toString(state))) {
-            Log.e(TAG, "Failed to write touch sampling state to file");
-        }
-    }
-
     /**
      * Receiver to handle boot completion and reinitialize the tile state.
      */
@@ -114,18 +106,9 @@ public class TouchSamplingTileService extends TileService {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
-                Log.d(TAG, "Boot completed - reinitializing tile state");
-
-                SharedPreferences sharedPref = context.getSharedPreferences(
-                        TouchSamplingSettingsFragment.SHAREDHTSR, Context.MODE_PRIVATE);
-                boolean htsrEnabled = sharedPref.getBoolean(TouchSamplingSettingsFragment.HTSR_STATE, false);
-
-                int state = htsrEnabled ? 1 : 0;
-                if (!FileUtils.writeLine(TouchSamplingUtils.HTSR_FILE, Integer.toString(state))) {
-                    Log.e(TAG, "Failed to write touch sampling state to file during boot");
-                }
+                Log.d(TAG, "Boot completed - restoring touch sampling state");
+                TouchSamplingUtils.restoreSamplingValue(context);
             }
         }
     }
 }
-

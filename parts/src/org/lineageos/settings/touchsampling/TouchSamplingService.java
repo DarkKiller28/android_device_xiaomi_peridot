@@ -25,43 +25,42 @@ import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.util.Log;
 
-import org.lineageos.settings.R;
-import org.lineageos.settings.touchsampling.TouchSamplingUtils;
-import org.lineageos.settings.utils.FileUtils;
-
 public class TouchSamplingService extends Service {
     private static final String TAG = "TouchSamplingService";
 
-    private BroadcastReceiver mScreenUnlockReceiver;
+    private BroadcastReceiver mScreenStateReceiver;
 
     @Override
     public void onCreate() {
         super.onCreate();
         Log.d(TAG, "TouchSamplingService started");
 
-        // Register a broadcast receiver for screen unlock and screen on events
-        mScreenUnlockReceiver = new BroadcastReceiver() {
+        // Register receiver for screen state changes
+        mScreenStateReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                if (Intent.ACTION_USER_PRESENT.equals(intent.getAction()) ||
-                    Intent.ACTION_SCREEN_ON.equals(intent.getAction())) {
-                    Log.d(TAG, "Screen turned on or device unlocked. Reapplying touch sampling rate.");
+                String action = intent.getAction();
+                if (Intent.ACTION_USER_PRESENT.equals(action) ||
+                    Intent.ACTION_SCREEN_ON.equals(action)) {
+                    Log.d(TAG, "Screen state changed, reapplying touch sampling rate");
                     applyTouchSamplingRate();
                 }
             }
         };
 
         IntentFilter filter = new IntentFilter();
-        filter.addAction(Intent.ACTION_USER_PRESENT); // Triggered when the user unlocks the device
-        filter.addAction(Intent.ACTION_SCREEN_ON);    // Triggered when the screen turns on
-        registerReceiver(mScreenUnlockReceiver, filter);
+        filter.addAction(Intent.ACTION_USER_PRESENT);
+        filter.addAction(Intent.ACTION_SCREEN_ON);
+        registerReceiver(mScreenStateReceiver, filter);
 
-        // Apply the touch sampling rate initially
+        // Apply initial touch sampling rate
         applyTouchSamplingRate();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        Log.d(TAG, "TouchSamplingService onStartCommand");
+        applyTouchSamplingRate();
         return START_STICKY;
     }
 
@@ -70,12 +69,16 @@ public class TouchSamplingService extends Service {
         super.onDestroy();
         Log.d(TAG, "TouchSamplingService stopped");
 
-        // PugzAreCute: Fix to allow disabling HSTR.
-        applyTouchSamplingRate(0);
+        // Disable touch sampling when service stops
+        TouchSamplingUtils.writeTouchSamplingState(0);
 
-        // Unregister the broadcast receiver
-        if (mScreenUnlockReceiver != null) {
-            unregisterReceiver(mScreenUnlockReceiver);
+        // Unregister receiver
+        if (mScreenStateReceiver != null) {
+            try {
+                unregisterReceiver(mScreenStateReceiver);
+            } catch (IllegalArgumentException e) {
+                Log.w(TAG, "Receiver was not registered");
+            }
         }
     }
 
@@ -88,21 +91,13 @@ public class TouchSamplingService extends Service {
         SharedPreferences sharedPref = getSharedPreferences(
                 TouchSamplingSettingsFragment.SHAREDHTSR, Context.MODE_PRIVATE);
         boolean htsrEnabled = sharedPref.getBoolean(TouchSamplingSettingsFragment.HTSR_STATE, false);
-        int state = htsrEnabled ? 1 : 0;
-
-        String currentState = FileUtils.readOneLine(TouchSamplingUtils.HTSR_FILE);
-        if (currentState == null || !currentState.equals(Integer.toString(state))) {
-            Log.d(TAG, "Applying touch sampling rate: " + state);
-            FileUtils.writeOneLine(TouchSamplingUtils.HTSR_FILE, Integer.toString(state));
+        
+        int desiredState = htsrEnabled ? 1 : 0;
+        int currentState = TouchSamplingUtils.readTouchSamplingState();
+        
+        if (currentState != desiredState) {
+            Log.d(TAG, "Applying touch sampling rate: " + desiredState);
+            TouchSamplingUtils.writeTouchSamplingState(desiredState);
         }
-    }
-
-    // PugzAreCute: Fix to allow disabling HSTR.
-    private void applyTouchSamplingRate(int state) {
-        String currentState = FileUtils.readOneLine(TouchSamplingUtils.HTSR_FILE);
-        if (currentState == null || !currentState.equals(Integer.toString(state))) {
-            Log.d(TAG, "Applying temporary touch sampling rate: " + state);
-            FileUtils.writeOneLine(TouchSamplingUtils.HTSR_FILE, Integer.toString(state));
-	    }
     }
 }
