@@ -19,6 +19,7 @@ package org.lineageos.settings.touchsampling;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
@@ -29,6 +30,7 @@ import org.lineageos.settings.R;
 public class TouchSamplingTileService extends TileService {
 
     private static final String TAG = "TouchSamplingTileService";
+    private BroadcastReceiver mTileUpdateReceiver;
 
     @Override
     public void onTileAdded() {
@@ -41,13 +43,34 @@ public class TouchSamplingTileService extends TileService {
     public void onTileRemoved() {
         super.onTileRemoved();
         Log.d(TAG, "Tile removed");
+        if (mTileUpdateReceiver != null) {
+            try {
+                unregisterReceiver(mTileUpdateReceiver);
+            } catch (IllegalArgumentException e) {
+                Log.w(TAG, "Tile update receiver was not registered");
+            }
+        }
     }
 
     @Override
     public void onStartListening() {
         super.onStartListening();
         Log.d(TAG, "Tile started listening");
+        registerTileUpdateReceiver();
         updateTileState();
+    }
+
+    @Override
+    public void onStopListening() {
+        super.onStopListening();
+        Log.d(TAG, "Tile stopped listening");
+        if (mTileUpdateReceiver != null) {
+            try {
+                unregisterReceiver(mTileUpdateReceiver);
+            } catch (IllegalArgumentException e) {
+                Log.w(TAG, "Tile update receiver was not registered");
+            }
+        }
     }
 
     @Override
@@ -97,6 +120,22 @@ public class TouchSamplingTileService extends TileService {
         SharedPreferences sharedPref = getSharedPreferences(
                 TouchSamplingSettingsFragment.SHAREDHTSR, Context.MODE_PRIVATE);
         sharedPref.edit().putBoolean(TouchSamplingSettingsFragment.HTSR_STATE, state).apply();
+    }
+
+    private void registerTileUpdateReceiver() {
+        mTileUpdateReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if ("org.lineageos.settings.touchsampling.ACTION_UPDATE_TILE".equals(intent.getAction())) {
+                    Log.d(TAG, "Received tile update broadcast");
+                    updateTileState();
+                }
+            }
+        };
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("org.lineageos.settings.touchsampling.ACTION_UPDATE_TILE");
+        registerReceiver(mTileUpdateReceiver, filter);
     }
 
     /**

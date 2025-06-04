@@ -26,8 +26,12 @@ import android.util.Log;
 
 import androidx.preference.PreferenceManager;
 
+import java.util.Set;
+
 import org.lineageos.settings.R;
 import org.lineageos.settings.utils.FileUtils;
+import org.lineageos.settings.touchsampling.TouchSamplingUtils;
+import org.lineageos.settings.touchsampling.TouchSamplingSettingsFragment;
 
 public class PowerProfileTileService extends TileService {
     private static final String TAG = "PowerProfileTileService";
@@ -222,6 +226,10 @@ public class PowerProfileTileService extends TileService {
 
         boolean isCharging = isCharging();
         
+        // Handle HTSR for PERFORMANCE profile
+        boolean htsrEnabled = profile == PowerProfile.PERFORMANCE;
+        updateTouchSamplingState(htsrEnabled);
+        
         switch (profile) {
             case BATTERY:
                 if (!isCharging) {
@@ -382,5 +390,34 @@ public class PowerProfileTileService extends TileService {
     // Boot Detection & Profile Management
     private boolean isFirstBoot() {
         return !mSharedPrefs.contains(POWER_PROFILE_PREF_KEY);
+    }
+
+    // Touch Sampling Integration
+    private void updateTouchSamplingState(boolean enable) {
+        // Update hardware state
+        TouchSamplingUtils.writeTouchSamplingState(enable ? 1 : 0);
+
+        // Update SharedPreferences for TouchSamplingSettingsFragment
+        SharedPreferences htsrPrefs = getSharedPreferences(
+                TouchSamplingSettingsFragment.SHAREDHTSR, Context.MODE_PRIVATE);
+        htsrPrefs.edit().putBoolean(TouchSamplingSettingsFragment.HTSR_STATE, enable).apply();
+
+        // Control TouchSamplingService
+        Intent serviceIntent = new Intent(this, org.lineageos.settings.touchsampling.TouchSamplingService.class);
+        if (enable) {
+            startService(serviceIntent);
+        } else {
+            // Only stop the service if no per-app HTSR is enabled
+            Set<String> enabledApps = TouchSamplingUtils.getPerAppHtsrEnabledApps(this);
+            if (enabledApps.isEmpty()) {
+                stopService(serviceIntent);
+            }
+        }
+
+        // Update Quick Settings tile
+        Intent tileUpdateIntent = new Intent("org.lineageos.settings.touchsampling.ACTION_UPDATE_TILE");
+        sendBroadcast(tileUpdateIntent);
+
+        Log.d(TAG, "Touch sampling " + (enable ? "enabled" : "disabled") + " for performance profile");
     }
 }
