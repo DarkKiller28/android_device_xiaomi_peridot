@@ -5,3 +5,6 @@ allow system_app vendor_sysfs_touch:file rw_file_perms;
 # Power profile / thermal
 allow system_app sysfs_thermal:dir search;
 allow system_app sysfs_thermal:file rw_file_perms;
+
+# Allow KProfiles to be adjusted by a system app
+allow system_app sysfs_kprofiles:file rw_file_perms;
