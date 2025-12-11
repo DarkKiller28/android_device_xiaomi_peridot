@@ -67,6 +67,21 @@ blob_fixups: blob_fixups_user_type = {
             'libprotobuf-cpp-full-21.7.so'
     ),
     (
+        'odm/bin/hw/vendor.xiaomi.sensor.citsensorservice.aidl',
+        'odm/lib64/camera/plugins/com.xiaomi.plugin.anchor.so',
+        'odm/lib64/com.qti.feature2.anchorsync.so',
+        'odm/lib64/hw/displayfeature.default.so',
+        'vendor/bin/hw/vendor.qti.hardware.display.composer-service',
+        'vendor/lib64/libaudiocloudctrl.so',
+        'vendor/lib64/libdpps.so',
+        'vendor/lib64/liblearningmodule.so',
+        'vendor/lib64/libsnapdragoncolor-manager.so',
+    ): blob_fixup()
+        .replace_needed(
+            'libtinyxml2.so',
+            'libtinyxml2-v34.so'
+    ),
+    (
         'odm/etc/camera/enhance_motiontuning.xml',
         'odm/etc/camera/motiontuning.xml',
         'odm/etc/camera/night_motiontuning.xml'
@@ -74,7 +89,6 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('xml=version', 'xml version'),
     (
         'odm/lib64/hw/camera.qcom.so',
-        'odm/lib64/hw/camera.xiaomi.so',
         'odm/lib64/hw/com.qti.chi.override.so',
         'odm/lib64/libchifeature2.so',
     ): blob_fixup()
@@ -82,6 +96,16 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed(
             'android.hardware.graphics.allocator-V1-ndk.so',
             'android.hardware.graphics.allocator-V2-ndk.so'
+    ),
+    'odm/lib64/hw/camera.xiaomi.so': blob_fixup()
+        .add_needed('libprocessgroup_shim.so')
+        .replace_needed(
+            'android.hardware.graphics.allocator-V1-ndk.so',
+            'android.hardware.graphics.allocator-V2-ndk.so'
+        )
+        .replace_needed(
+            'libtinyxml2.so',
+            'libtinyxml2-v34.so'
     ),
     (
         'odm/lib64/camera/com.qti.actuator.peridot_aac_imx882_gt9764ber_wide_i_actuator.so',
@@ -134,7 +158,6 @@ blob_fixups: blob_fixups_user_type = {
         'odm/lib64/com.qti.camx.chiiqutils.so',
         'odm/lib64/com.qti.chiusecaseselector.so',
         'odm/lib64/com.qti.feature2.afbrckt.so',
-        'odm/lib64/com.qti.feature2.anchorsync.so',
         'odm/lib64/com.qti.feature2.demux.so',
         'odm/lib64/com.qti.feature2.derivedoffline.so',
         'odm/lib64/com.qti.feature2.fusion.so',
@@ -198,6 +221,15 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed(
             'android.hardware.graphics.allocator-V1-ndk.so',
             'android.hardware.graphics.allocator-V2-ndk.so'
+    ),
+    'odm/lib64/com.qti.feature2.anchorsync.so': blob_fixup()
+        .replace_needed(
+            'android.hardware.graphics.allocator-V1-ndk.so',
+            'android.hardware.graphics.allocator-V2-ndk.so'
+        )
+        .replace_needed(
+            'libtinyxml2.so',
+            'libtinyxml2-v34.so'
     ),
     (
         'odm/lib64/libcamxcommonutils.so',
