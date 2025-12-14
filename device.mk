@@ -370,9 +370,8 @@ PRODUCT_PACKAGES += \
     ApertureOverlayPeridot \
     CarrierConfigOverlayPeridot \
     DeviceAsWebcamResTarget \
+    CustomSettingsOverlayPeridot \
     FrameworkOverlayPeridot \
-    LineageSDKOverlayPeridot \
-    LineageSettingsOverlayPeridot \
     NfcOverlayPeridot \
     OpenDeltaOverlayPeridot \
     SecureElementOverlayPeridot \
