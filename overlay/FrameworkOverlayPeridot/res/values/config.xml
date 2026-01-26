@@ -751,8 +751,4 @@
 
     <!-- If not zero, limits the internal screen recorder's framerate to the set value. -->
     <integer name="config_screenRecorderMaxFramerate">120</integer>
-
-    <!-- Whether WM DisplayContent supports high performance transitions
-         (lower-end devices may want to disable) -->
-    <bool name="config_deviceSupportsHighPerfTransitions">false</bool>
 </resources>
