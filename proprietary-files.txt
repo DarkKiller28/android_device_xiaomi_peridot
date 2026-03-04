@@ -1,4 +1,5 @@
 # All unpinned blobs below are extracted from peridot OS3.0.4.0.WNPMIXM - peridot_global-ota_full-OS3.0.4.0.WNPMIXM
+# pdx245: sssi_64-user 14 69.0.A.2.49 1 release-keys
 
 # ACDB
 odm/etc/acdbdata/Fluence/Fluence_acdb_cal.acdb
@@ -1597,6 +1598,9 @@ odm/etc/display/LUT0.txt
 odm/etc/display/LUT1.txt
 odm/etc/display/LUT2.txt
 
+# Dolby (codec2) - from pdx245
+vendor/bin/hw/vendor.dolby.media.c2@1.0-service|893132de163868f23a5685b9457b2e105e28d821
+
 # Dolby music
 vendor/bin/hw/vendor.dolby.hardware.dms@2.0-service
 vendor/etc/init/vendor.dolby.hardware.dms@2.0-service.rc
@@ -1770,7 +1774,6 @@ vendor/lib64/vendor.qti.hardware.ListenSoundModel@1.0.so
 odm/etc/surfaceflinger/dolby_vision.cfg
 odm/vendor/etc/dolby_vision.cfg
 odm/vendor/persist/display/dolby_vision.cfg
-vendor/bin/hw/vendor.dolby.media.c2@1.0-service
 vendor/bin/hw/vendor.qti.media.c2@1.0-service
 vendor/bin/hw/vendor.qti.media.c2audio@1.0-service
 vendor/etc/init/init.qti.media.rc
