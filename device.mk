@@ -159,6 +159,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey
 
+# Device-Features
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/device_features/peridot.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/device_features/peridot.xml
+
 # Fastbootd
 PRODUCT_PACKAGES += \
     fastbootd
