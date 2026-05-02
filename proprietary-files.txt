@@ -2422,6 +2422,8 @@ vendor/lib64/vendor.qti.hardware.soter-V1-ndk.so
 # Thermal
 vendor/bin/mi_thermald
 vendor/etc/init/hw/init.mi_thermald.rc
+vendor/bin/thermal-engine-v2
+vendor/lib64/liblmthermallistner.so
 vendor/lib64/libthermalclient.so
 
 # Thermal configs
