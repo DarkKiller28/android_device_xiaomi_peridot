@@ -7,10 +7,6 @@ import /vendor/etc/init/hw/init.batterysecret.rc
 import /vendor/etc/init/hw/init.mi_thermald.rc
 
 on early-boot
-    # Modem
-    mkdir /data/vendor/modem 0777 root root
-    mkdir /data/vendor/modem/diag_logs 0777 root root
-
     # Enable WLAN cold boot calibration
     write /sys/kernel/cnss/fs_ready 1
 
@@ -20,13 +16,151 @@ on early-init
     write /proc/sys/net/ipv4/tcp_mtu_probing 1
 
     chown system graphics /sys/class/drm/card0/device/power/control
+    chown system system /dev/cpu_dma_latency
+    chmod 0660 /dev/cpu_dma_latency
+    chown system system /sys/kernel/msm_performance/parameters/cpu_max_freq
+    chown system system /sys/kernel/msm_performance/parameters/cpu_min_freq
+    chmod 0660 /sys/kernel/msm_performance/parameters/cpu_max_freq
+    chmod 0660 /sys/kernel/msm_performance/parameters/cpu_min_freq
+    chown system system /dev/cpuctl/top-app/cpu.uclamp.latency_sensitive
+    chown system system /dev/cpuctl/top-app/cpu.uclamp.min
+    chown system system /dev/cpuctl/top-app/cpu.uclamp.max
+    chmod 0660 /dev/cpuctl/top-app/cpu.uclamp.latency_sensitive
+    chmod 0660 /dev/cpuctl/top-app/cpu.uclamp.min
+    chmod 0660 /dev/cpuctl/top-app/cpu.uclamp.max
+    chown system system /sys/class/kgsl/kgsl-3d0/devfreq/max_freq
+    chown system system /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
+    chown system system /sys/class/kgsl/kgsl-3d0/idle_timer
+    chmod 0660 /sys/class/kgsl/kgsl-3d0/devfreq/max_freq
+    chmod 0660 /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
+    chmod 0660 /sys/class/kgsl/kgsl-3d0/idle_timer
+    chown system system /sys/devices/system/cpu/qcom_lpm/parameters/prediction_disabled
+    chown system system /sys/devices/system/cpu/qcom_lpm/parameters/sleep_disabled
+    chown system system /sys/devices/system/cpu/cpu0/core_ctl/enable
+    chown system system /sys/devices/system/cpu/cpu3/core_ctl/enable
+    chown system system /sys/devices/system/cpu/cpu7/core_ctl/enable
+    chown system system /sys/devices/system/cpu/cpu0/core_ctl/min_cpus
+    chown system system /sys/devices/system/cpu/cpu3/core_ctl/min_cpus
+    chown system system /sys/devices/system/cpu/cpu7/core_ctl/min_cpus
+    chmod 0660 /sys/devices/system/cpu/qcom_lpm/parameters/prediction_disabled
+    chmod 0660 /sys/devices/system/cpu/qcom_lpm/parameters/sleep_disabled
+    chmod 0660 /sys/devices/system/cpu/cpu0/core_ctl/enable
+    chmod 0660 /sys/devices/system/cpu/cpu3/core_ctl/enable
+    chmod 0660 /sys/devices/system/cpu/cpu7/core_ctl/enable
+    chmod 0660 /sys/devices/system/cpu/cpu0/core_ctl/min_cpus
+    chmod 0660 /sys/devices/system/cpu/cpu3/core_ctl/min_cpus
+    chmod 0660 /sys/devices/system/cpu/cpu7/core_ctl/min_cpus
+
+    # Schedutil/WALT tuning
+    chown system system /proc/sys/walt/sched_boost
+    chown system system /proc/sys/walt/sched_upmigrate
+    chown system system /proc/sys/walt/sched_downmigrate
+    chown system system /proc/sys/walt/sched_busy_hyst_ns
+    chown system system /proc/sys/walt/sched_busy_hysteresis_enable_cpus
+    chown system system /proc/sys/walt/sched_idle_enough
+    chown system system /proc/sys/walt/sched_min_task_util_for_boost
+    chown system system /proc/sys/walt/sched_min_task_util_for_colocation
+    chown system system /proc/sys/walt/sched_min_task_util_for_uclamp
+    chmod 0660 /proc/sys/walt/sched_boost
+    chmod 0660 /proc/sys/walt/sched_upmigrate
+    chmod 0660 /proc/sys/walt/sched_downmigrate
+    chmod 0660 /proc/sys/walt/sched_busy_hyst_ns
+    chmod 0660 /proc/sys/walt/sched_busy_hysteresis_enable_cpus
+    chmod 0660 /proc/sys/walt/sched_idle_enough
+    chmod 0660 /proc/sys/walt/sched_min_task_util_for_boost
+    chmod 0660 /proc/sys/walt/sched_min_task_util_for_colocation
+    chmod 0660 /proc/sys/walt/sched_min_task_util_for_uclamp
+
+    # Bus nodes
+    chown system system /sys/devices/system/cpu/bus_dcvs/DDR/24091000.qcom,bwmon-ddr/hist_memory
+    chown system system /sys/devices/system/cpu/bus_dcvs/DDR/24091000.qcom,bwmon-ddr/hyst_length
+    chown system system /sys/devices/system/cpu/bus_dcvs/DDR/24091000.qcom,bwmon-ddr/hyst_trigger_count
+    chown system system /sys/devices/system/cpu/bus_dcvs/DDR/24091000.qcom,bwmon-ddr/io_percent
+    chown system system /sys/devices/system/cpu/bus_dcvs/DDR/24091000.qcom,bwmon-ddr/min_freq
+    chown system system /sys/devices/system/cpu/bus_dcvs/DDR/24091000.qcom,bwmon-ddr/sample_ms
+    chown system system /sys/devices/system/cpu/bus_dcvs/LLCC/240b7400.qcom,bwmon-llcc/hist_memory
+    chown system system /sys/devices/system/cpu/bus_dcvs/LLCC/240b7400.qcom,bwmon-llcc/hyst_length
+    chown system system /sys/devices/system/cpu/bus_dcvs/LLCC/240b7400.qcom,bwmon-llcc/hyst_trigger_count
+    chown system system /sys/devices/system/cpu/bus_dcvs/LLCC/240b7400.qcom,bwmon-llcc/io_percent
+    chown system system /sys/devices/system/cpu/bus_dcvs/LLCC/240b7400.qcom,bwmon-llcc/max_freq
+    chown system system /sys/devices/system/cpu/bus_dcvs/LLCC/240b7400.qcom,bwmon-llcc/sample_ms
+    chmod 0660 /sys/devices/system/cpu/bus_dcvs/DDR/24091000.qcom,bwmon-ddr/hist_memory
+    chmod 0660 /sys/devices/system/cpu/bus_dcvs/DDR/24091000.qcom,bwmon-ddr/hyst_length
+    chmod 0660 /sys/devices/system/cpu/bus_dcvs/DDR/24091000.qcom,bwmon-ddr/hyst_trigger_count
+    chmod 0660 /sys/devices/system/cpu/bus_dcvs/DDR/24091000.qcom,bwmon-ddr/io_percent
+    chmod 0660 /sys/devices/system/cpu/bus_dcvs/DDR/24091000.qcom,bwmon-ddr/min_freq
+    chmod 0660 /sys/devices/system/cpu/bus_dcvs/DDR/24091000.qcom,bwmon-ddr/sample_ms
+    chmod 0660 /sys/devices/system/cpu/bus_dcvs/LLCC/240b7400.qcom,bwmon-llcc/hist_memory
+    chmod 0660 /sys/devices/system/cpu/bus_dcvs/LLCC/240b7400.qcom,bwmon-llcc/hyst_length
+    chmod 0660 /sys/devices/system/cpu/bus_dcvs/LLCC/240b7400.qcom,bwmon-llcc/hyst_trigger_count
+    chmod 0660 /sys/devices/system/cpu/bus_dcvs/LLCC/240b7400.qcom,bwmon-llcc/io_percent
+    chmod 0660 /sys/devices/system/cpu/bus_dcvs/LLCC/240b7400.qcom,bwmon-llcc/max_freq
+    chmod 0660 /sys/devices/system/cpu/bus_dcvs/LLCC/240b7400.qcom,bwmon-llcc/sample_ms
+
+    # CPU Walt nodes
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/walt/hispeed_freq
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/walt/hispeed_load
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/walt/pl
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/walt/rtg_boost_freq
+    chmod 0660 /sys/devices/system/cpu/cpu0/cpufreq/walt/hispeed_freq
+    chmod 0660 /sys/devices/system/cpu/cpu0/cpufreq/walt/hispeed_load
+    chmod 0660 /sys/devices/system/cpu/cpu0/cpufreq/walt/pl
+    chmod 0660 /sys/devices/system/cpu/cpu0/cpufreq/walt/rtg_boost_freq
+
+    # Dynpf
+    chown system system /sys/devices/system/cpu/dynpf/enable_dynpf
+    chmod 0660 /sys/devices/system/cpu/dynpf/enable_dynpf
+
+    # Uclamp FG
+    chown system system /dev/cpuctl/foreground/cpu.uclamp.min
+    chmod 0660 /dev/cpuctl/foreground/cpu.uclamp.min
 
 on boot
     # Disable FB scaling // xiaomi disables it in qti_display_boot scripts
     setprop vendor.display.enable_fb_scaling 1
 
+
     # Create persist for camera calibration data
     mkdir /mnt/vendor/persist/camera 0755 system cameraserver
+
+    # TCP
+    # Congestion + queue
+    write /proc/sys/net/ipv4/tcp_congestion_control bbr
+    write /proc/sys/net/core/default_qdisc fq
+
+    # Fast connection setup
+    write /proc/sys/net/ipv4/tcp_fastopen 3
+    write /proc/sys/net/ipv4/tcp_mtu_probing 1
+
+    # Stability + latency
+    write /proc/sys/net/ipv4/tcp_slow_start_after_idle 0
+    write /proc/sys/net/ipv4/tcp_no_metrics_save 1
+
+    # Buffers
+    write /proc/sys/net/core/rmem_max 16777216
+    write /proc/sys/net/core/wmem_max 16777216
+    write /proc/sys/net/ipv4/tcp_rmem 4096 87380 16777216
+    write /proc/sys/net/ipv4/tcp_wmem 4096 65536 16777216
+
+    # Keepalive
+    write /proc/sys/net/ipv4/tcp_keepalive_time 600
+    write /proc/sys/net/ipv4/tcp_keepalive_intvl 30
+    write /proc/sys/net/ipv4/tcp_keepalive_probes 5
+    write /proc/sys/net/core/netdev_max_backlog 5000
+
+    # Safe connection retries
+    write /proc/sys/net/ipv4/tcp_syn_retries 4
+    write /proc/sys/net/ipv4/tcp_synack_retries 3
+
+    # Reliability features
+    write /proc/sys/net/ipv4/tcp_timestamps 1
+    write /proc/sys/net/ipv4/tcp_sack 1
+    write /proc/sys/net/ipv4/tcp_ecn 1
+    write /proc/sys/net/ipv4/tcp_syncookies 1
+    write /proc/sys/net/ipv4/tcp_fin_timeout 15
+    write /proc/sys/net/ipv4/tcp_tw_reuse 1
+    write /proc/sys/net/ipv6/conf/all/use_tempaddr 2
+    write /proc/sys/net/ipv6/conf/default/use_tempaddr 2
 
     # Display feature sysfs node
     chown system system /sys/class/mi_display/disp-DSI-0/disp_param
@@ -59,14 +193,13 @@ on boot
     chown system system /sys/class/thermal/thermal_message/board_sensor_temp_comp
     chown system system /sys/class/thermal/thermal_message/cpu_nolimit_temp
 
-    # Set thermal mode to mgame
-    write /sys/devices/virtual/thermal/thermal_message/sconfig 19
-    
     # Xiaomi touch
     chown system system /dev/xiaomi-touch
     chmod 0660 /dev/xiaomi-touch
     chown system system /sys/class/touch/touch_dev/fod_longpress_gesture_enabled
     chmod 0660 /sys/class/touch/touch_dev/fod_longpress_gesture_enabled
+    chown system system /sys/class/touch/touch_dev/fod_press_status
+    chmod 0660 /sys/class/touch/touch_dev/fod_press_status
     chown system system /sys/class/touch/touch_dev/gesture_single_tap_enabled
     chmod 0660 /sys/class/touch/touch_dev/gesture_single_tap_enabled
     chown system system /sys/class/touch/touch_dev/gesture_double_tap_enabled
@@ -107,9 +240,27 @@ on boot
     chmod 0700 /sys/bus/platform/devices/soc:fingerprint_fpc/screen
     chmod 0666 /dev/input/event2
 
+    # CPU-Sets
+    chown system system /dev/cpuset/cgroup.procs
+    chown system system /dev/cpuset/foreground/cgroup.procs
+    chown system system /dev/cpuset/background/cgroup.procs
+    chown system system /dev/cpuset/system-background/cgroup.procs
+    chown system system /dev/cpuset/top-app/cgroup.procs
+
+    chmod 0666 /dev/cpuset/foreground/cgroup.procs
+    chmod 0666 /dev/cpuset/background/cgroup.procs
+    chmod 0666 /dev/cpuset/system-background/cgroup.procs
+    chmod 0666 /dev/cpuset/top-app/cgroup.procs
+    chmod 0666 /dev/cpuset/cgroup.procs
+
+    chown system system /dev/stune/background/cgroup.procs
+    chown system system /dev/stune/top-app/cgroup.procs
+    chmod 0666 /dev/stune/background/cgroup.procs
+    chmod 0666 /dev/stune/top-app/cgroup.procs
+
 on charger
     chown system system /sys/class/backlight/panel0-backlight/brightness
-    write /sys/devices/system/cpu/qcom_lpm/parameters/sleep_disabled n
+    write /sys/devices/system/cpu/qcom_lpm/parameters/sleep_disabled 0
     write /sys/bus/platform/devices/1d84000.ufshc/clkscale_enable 1
     write /sys/bus/platform/devices/1d84000.ufshc/auto_hibern8 5000
     write /sys/bus/platform/devices/1d84000.ufshc/clkgate_enable 1
@@ -134,6 +285,12 @@ on fs
     chmod 0666 /dev/xlog
 
 on post-fs-data
+    chmod 0755 /system/bin/boothash.sh
+    chown root root /system/bin/boothash.sh
+    # Modem
+    mkdir /data/vendor/modem 0777 root root
+    mkdir /data/vendor/modem/diag_logs 0777 root root
+
     # camera
     mkdir /data/vendor/camera/offlinelog 0777 cameraserver audio
     mkdir /data/vendor/camera/aftersalelog 0777 cameraserver audio
@@ -204,9 +361,9 @@ on post-fs-data
     chmod 0664 /sys/class/leds/led:switch_2/trigger
     chmod 0664 /sys/class/leds/led:switch_3/trigger
     chmod 0664 /sys/class/leds/flashlight/brightness
-    
+
     #QCC mode configuration
-    setprop vendor.qti.qcc.oper.mode 4 
+    setprop vendor.qti.qcc.oper.mode 4
 
 #Enable WLAN SSR recovery
 on property:persist.vendor.ssr.restart_level=ALL_ENABLE
@@ -216,6 +373,56 @@ on property:persist.vendor.ssr.restart_level=ALL_ENABLE
 on property:persist.vendor.ssr.restart_level=ALL_DISABLE
     write /sys/kernel/cnss/recovery 0
 
+on property:vendor.post_boot.parsed=1
+    # Setup runtime cpus
+    write /dev/cpuset/background/cpus 0-1
+    write /dev/cpuset/restricted/cpus 0-3
+    write /dev/cpuset/foreground/cpus 0-6
+
+    # CPU Freq Tuning
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 364800
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 364800
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 364800
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 480000
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 480000
+    write /sys/devices/system/cpu/cpu5/cpufreq/scaling_min_freq 480000
+    write /sys/devices/system/cpu/cpu6/cpufreq/scaling_min_freq 480000  
+    write /sys/devices/system/cpu/cpu7/cpufreq/scaling_min_freq 480000
+
+    # IRQ Tuning
+    # IRQ 70: msm_drm0
+    # IRQ 222: kgsl_3d0_irq
+    write /proc/irq/70/smp_affinity_list 7
+    write /proc/irq/222/smp_affinity_list 6
+    # Battery Saving Tweak
+    write /proc/sys/kernel/perf_cpu_time_max_percent 15
+    write /proc/sys/vm/dirty_writeback_centisecs 1300
+    write /proc/sys/vm/dirty_ratio 10
+    write /proc/sys/vm/dirty_background_ratio 5
+    write /proc/sys/vm/stat_interval 1
+    write /proc/sys/vm/swappiness 70
+
+    # CPUSets
+    setprop dalvik.vm.dex2oat-cpu-set 0,1,2,3,4,5,6,7
+    setprop dalvik.vm.dex2oat-threads 8
+
+    # Uclamp tuning
+    write /dev/cpuctl/top-app/cpu.uclamp.min 24
+    write /dev/cpuctl/top-app/cpu.uclamp.latency_sensitive 1
+    write /dev/cpuctl/foreground/cpu.uclamp.min 8
+    write /dev/cpuctl/foreground/cpu.uclamp.latency_sensitive 1
+    write /dev/cpuctl/background/cpu.uclamp.min 0
+    write /dev/cpuctl/background/cpu.uclamp.latency_sensitive 0
+
+    # Schedutil/WALT tuning
+    write /proc/sys/walt/sched_upmigrate "90 100"
+    write /proc/sys/walt/sched_downmigrate "75 90"
+    write /proc/sys/walt/sched_min_task_util_for_uclamp 0
+    write /proc/sys/walt/sched_busy_hyst_ns 10000000
+
+    # Disable multiple kswapd threads
+    write /proc/sys/vm/kswapd_threads 1
+
 on property:sys.boot_completed=1
     write /dev/kmsg "start qrtr-lookup after Boot completed "
     start qrtr-lookup
@@ -223,6 +430,12 @@ on property:sys.boot_completed=1
     # for online boot cpu
     wait /sys/class/thermal/thermal_message/boot_complete
     write /sys/class/thermal/thermal_message/boot_complete 2
+
+#Hide Magisk
+on property:sys.boot_completed=1
+    # Restrict permissions to socket file
+    # to hide Magisk & co.
+    chmod 440 /proc/net/unix
 
     # Enable PowerHAL hint processing
     setprop vendor.powerhal.init 1
@@ -264,3 +477,16 @@ service vendor.sensors-hal-multihal /vendor/bin/hw/android.hardware.sensors-serv
     socket audio_us_socket_1 seqpacket 0666 system system
     capabilities BLOCK_SUSPEND
     rlimit rtprio 10 10
+
+# Map sys.perfmodeactive to sys.perf_mode_active for compatibility
+on property:sys.perfmodeactive=1
+    setprop sys.perf_mode_active 1
+
+on property:sys.perfmodeactive=2
+    setprop sys.perf_mode_active 2
+
+on property:sys.perfmodeactive=3
+    setprop sys.perf_mode_active 3
+
+on property:sys.perfmodeactive=0
+    setprop sys.perf_mode_active 0
