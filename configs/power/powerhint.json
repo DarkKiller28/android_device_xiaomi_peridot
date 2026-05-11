@@ -588,7 +588,7 @@
         {
             "PowerHint": "LAUNCH",
             "Node": "_sys_devices_system_cpu_bus_dcvs_DDR_24091000.qcom,bwmon_ddr_min_freq",
-            "Value": "1000000",
+            "Value": "800000",
             "Duration": 900
         },
         {
@@ -601,25 +601,31 @@
             "PowerHint": "LAUNCH",
             "Node": "UclampTAMin",
             "Value": "48",
-            "Duration": 1500
+            "Duration": 1200
         },
         {
             "PowerHint": "LAUNCH",
             "Node": "UclampFGMin",
             "Value": "30",
-            "Duration": 3000
+            "Duration": 2000
         },
         {
             "PowerHint": "LAUNCH",
             "Node": "GPUIdleTimer",
-            "Value": "80",
-            "Duration": 2000
+            "Value": "20",
+            "Duration": 1200
         },
         {
             "PowerHint": "LAUNCH",
             "Node": "GPUMinFreq",
             "Value": "353000000",
-            "Duration": 2000
+            "Duration": 1200
+        },
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "GPUMaxFreq",
+            "Value": "500000000",
+            "Duration": 1200
         },
         {
             "PowerHint": "LAUNCH",
@@ -702,13 +708,13 @@
         {
             "PowerHint": "INTERACTION",
             "Node": "GPUMinFreq",
-            "Value": "255000000",
-            "Duration": 80
+            "Value": "353000000",
+            "Duration": 60
         },
         {
             "PowerHint": "INTERACTION",
             "Node": "GPUIdleTimer",
-            "Value": "80",
+            "Value": "40",
             "Duration": 80
         },
         {
@@ -1213,54 +1219,6 @@
             "PowerHint": "DISPLAY_INACTIVE",
             "Node": "_sys_devices_system_cpu_bus_dcvs_LLCC_240b7400.qcom,bwmon_llcc_sample_ms",
             "Value": "33",
-            "Duration": 0
-        },
-        {
-            "PowerHint": "GAME",
-            "Node": "GPUMaxFreq",
-            "Value": "900000000",
-            "Duration": 0
-        },
-        {
-            "PowerHint": "GAME",
-            "Node": "GPUMinFreq",
-            "Value": "255000000",
-            "Duration": 0
-        },
-        {
-            "PowerHint": "GAME",
-            "Node": "MSMPerfMaxFreq",
-            "Value": "0:1708800 1:1708800 2:1708800 3:2419200 4:2419200 5:2419200 6:2419200 7:2803200",
-            "Duration": 0
-        },
-        {
-            "PowerHint": "GAME",
-            "Node": "UclampTAMin",
-            "Value": "48",
-            "Duration": 0
-        },
-        {
-            "PowerHint": "GAME",
-            "Node": "_proc_sys_walt_sched_boost",
-            "Value": "1",
-            "Duration": 0
-        },
-        {
-            "PowerHint": "SUSTAINED_PERFORMANCE",
-            "Node": "UclampTAMin",
-            "Value": "30",
-            "Duration": 0
-        },
-        {
-            "PowerHint": "SUSTAINED_PERFORMANCE",
-            "Node": "_proc_sys_walt_sched_boost",
-            "Value": "0",
-            "Duration": 0
-        },
-        {
-            "PowerHint": "SUSTAINED_PERFORMANCE",
-            "Node": "_sys_devices_system_cpu_bus_dcvs_DDR_24091000.qcom,bwmon_ddr_min_freq",
-            "Value": "681000",
             "Duration": 0
         }
     ]

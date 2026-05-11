@@ -484,6 +484,15 @@ on property:sys.perfmodeactive=1
 
 on property:sys.perfmodeactive=2
     setprop sys.perf_mode_active 2
+    write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 900000000
+    write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 255000000
+    write /dev/cpuctl/top-app/cpu.uclamp.min 30
+    write /dev/cpuctl/foreground/cpu.uclamp.min 30
+    write /proc/sys/walt/sched_boost 1
+    write /proc/sys/walt/sched_upmigrate "70 90"
+    write /proc/sys/walt/sched_downmigrate "45 60"
+    write /sys/devices/system/cpu/bus_dcvs/DDR/24091000.qcom,bwmon-ddr/min_freq 1000000
+    write /sys/class/kgsl/kgsl-3d0/idle_timer 80
 
 on property:sys.perfmodeactive=3
     setprop sys.perf_mode_active 3
