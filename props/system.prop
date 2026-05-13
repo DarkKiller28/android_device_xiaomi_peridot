@@ -16,3 +16,7 @@ ro.ril.disable.power.collapse=0
 ro.ril.fast.dormancy.rule=1 
 ro.ril.fast.dormancy.timeout=5
 ro.mot.eri.losalert.delay=1000
+
+# Optimizer
+persist.sys.perf.scroll_opt=true
+persist.sys.perf.scroll_opt.heavy_app=2
