@@ -143,6 +143,8 @@
             "Values": [
                 "0",
                 "8",
+                "20",
+                "25",
                 "30",
                 "48"
             ],
@@ -526,7 +528,7 @@
                 "353000000",
                 "255000000"
             ],
-            "DefaultIndex": 8,
+            "DefaultIndex": 3,
             "ResetOnInit": true
         },
         {
@@ -558,11 +560,11 @@
             "Values": [
                 "10000",
                 "80",
-                "58",
+                "60",
                 "40",
                 "20"
             ],
-            "DefaultIndex": 1,
+            "DefaultIndex": 3,
             "ResetOnInit": true
         }
     ],
@@ -571,7 +573,7 @@
             "PowerHint": "LAUNCH",
             "Node": "_proc_sys_walt_sched_boost",
             "Value": "1",
-            "Duration": 2000
+            "Duration": 1500
         },
         {
             "PowerHint": "LAUNCH",
@@ -600,14 +602,14 @@
         {
             "PowerHint": "LAUNCH",
             "Node": "UclampTAMin",
-            "Value": "48",
+            "Value": "30",
             "Duration": 1200
         },
         {
             "PowerHint": "LAUNCH",
             "Node": "UclampFGMin",
             "Value": "30",
-            "Duration": 2000
+            "Duration": 1200
         },
         {
             "PowerHint": "LAUNCH",
@@ -624,7 +626,7 @@
         {
             "PowerHint": "LAUNCH",
             "Node": "GPUMaxFreq",
-            "Value": "500000000",
+            "Value": "900000000",
             "Duration": 1200
         },
         {
@@ -643,7 +645,7 @@
             "PowerHint": "INTERACTION",
             "Node": "_proc_sys_walt_sched_boost",
             "Value": "1",
-            "Duration": 120
+            "Duration": 100
         },
         {
             "PowerHint": "INTERACTION",
@@ -720,7 +722,7 @@
         {
             "PowerHint": "INTERACTION",
             "Node": "UclampTAMin",
-            "Value": "30",
+            "Value": "25",
             "Duration": 100
         },
         {
