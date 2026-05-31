@@ -596,19 +596,19 @@
         {
             "PowerHint": "LAUNCH",
             "Node": "PMQoSCpuDmaLatency",
-            "Value": "44",
+            "Value": "67",
             "Duration": 600
         },
         {
             "PowerHint": "LAUNCH",
             "Node": "UclampTAMin",
-            "Value": "30",
+            "Value": "25",
             "Duration": 1200
         },
         {
             "PowerHint": "LAUNCH",
             "Node": "UclampFGMin",
-            "Value": "30",
+            "Value": "20",
             "Duration": 1200
         },
         {
@@ -710,14 +710,14 @@
         {
             "PowerHint": "INTERACTION",
             "Node": "GPUMinFreq",
-            "Value": "353000000",
+            "Value": "255000000",
             "Duration": 60
         },
         {
             "PowerHint": "INTERACTION",
             "Node": "GPUIdleTimer",
-            "Value": "40",
-            "Duration": 80
+            "Value": "20",
+            "Duration": 60
         },
         {
             "PowerHint": "INTERACTION",
