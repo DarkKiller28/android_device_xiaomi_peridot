@@ -8,3 +8,11 @@ ro.vendor.qti.va_aosp.support=1
 media.stagefright.thumbnail.prefer_hw_codecs=true
 ro.media.recorder-max-base-layer-fps=60
 ro.media.xml_variant.profiles=_cliffs_v0
+
+# RIL Powersaving
+persist.radio.add_power_save=1 
+pm.sleep_mode=1 
+ro.ril.disable.power.collapse=0
+ro.ril.fast.dormancy.rule=1 
+ro.ril.fast.dormancy.timeout=5
+ro.mot.eri.losalert.delay=1000
