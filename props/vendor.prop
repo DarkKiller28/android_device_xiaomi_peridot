@@ -163,6 +163,10 @@ vendor.gralloc.enable_logs=0
 # Incremental
 ro.incremental.enable=yes
 
+# HWUI
+debug.hwui.target_cpu_time_percent=30
+debug.hwui.use_hint_manager=true
+
 # Keymaster
 ro.crypto.metadata_init_delete_all_keys.enabled=true
 ro.hardware.keystore_desede=true
