@@ -121,7 +121,7 @@
                 "64",
                 "96"
             ],
-            "DefaultIndex": 1,
+            "DefaultIndex": 0,
             "ResetOnInit": true
         },
         {
@@ -148,7 +148,7 @@
                 "30",
                 "48"
             ],
-            "DefaultIndex": 1,
+            "DefaultIndex": 0,
             "ResetOnInit": true
         },
         {
@@ -229,6 +229,7 @@
             ],
             "Values": [
                 "0",
+                "39",
                 "10000000",
                 "12000000",
                 "15000000"
@@ -562,6 +563,7 @@
                 "80",
                 "60",
                 "40",
+                "30",
                 "20"
             ],
             "DefaultIndex": 3,
@@ -662,7 +664,7 @@
         {
             "PowerHint": "INTERACTION",
             "Node": "_proc_sys_walt_sched_busy_hyst_ns",
-            "Value": "10000000",
+            "Value": "39",
             "Duration": 100
         },
         {
@@ -716,7 +718,7 @@
         {
             "PowerHint": "INTERACTION",
             "Node": "GPUIdleTimer",
-            "Value": "20",
+            "Value": "30",
             "Duration": 60
         },
         {
@@ -734,7 +736,7 @@
         {
             "PowerHint": "INTERACTION",
             "Node": "PMQoSCpuDmaLatency",
-            "Value": "44",
+            "Value": "67",
             "Duration": 100
         },
         {
