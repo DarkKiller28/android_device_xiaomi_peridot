@@ -93,4 +93,10 @@
     <string name="loading_apps">Loading applications...</string>
     <string name="no_apps_found">No applications found</string>    
 
+    <!-- Charge Control -->
+    <string name="charge_tile_title">Charge Control</string>
+    <string name="charge_mode_ok">OK</string>
+    <string name="charge_mode_cool">Cool</string>
+    <string name="charge_mode_nuke">Nuke</string>
+
 </resources>
