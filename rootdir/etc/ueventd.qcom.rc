@@ -612,3 +612,6 @@ subsystem mem_buf_vm
 # Battery
 /sys/class/qcom-battery                                 input_suspend                   0660    system  system
 /sys/class/qcom-battery                                 fastcharge_enable               0660    system  system
+
+/sys/class/power_supply/battery     charge_control_limit       0664    system    system
+/sys/class/power_supply/battery     constant_charge_current    0664    system    system
