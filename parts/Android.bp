@@ -22,7 +22,8 @@ android_app {
 
     static_libs: [
         "org.lineageos.settings.resources",
-        "vendor.xiaomi.hardware.displayfeature-V2-java"
+        "vendor.xiaomi.hardware.displayfeature-V2-java",
+        "androidx.preference_preference"
     ],
 	
     required: [
