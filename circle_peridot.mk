@@ -35,5 +35,4 @@ PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 CIRCLE_MAINTAINER := ℝ𝕖𝕧𝕖𝕣𝕤𝕖𝕕ℝ𝕦𝕝𝕖𝕣༆𖣘(Soner)
 
 # Circle Stuff
-CIRCLE_BUILDTYPE := BETA
 WITH_GMS := true
