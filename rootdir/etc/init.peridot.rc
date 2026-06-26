@@ -19,7 +19,41 @@ on early-init
     # set tcp_mtu_probing to 1
     write /proc/sys/net/ipv4/tcp_mtu_probing 1
 
+    # DRM
     chown system graphics /sys/class/drm/card0/device/power/control
+
+    # CPU DMA latency
+    chown system system /dev/cpu_dma_latency
+    chmod 0660 /dev/cpu_dma_latency
+
+    # Top-app uclamp
+    chown system system /dev/cpuctl/top-app/cpu.uclamp.latency_sensitive
+    chown system system /dev/cpuctl/top-app/cpu.uclamp.min
+    chown system system /dev/cpuctl/top-app/cpu.uclamp.max
+    chmod 0660 /dev/cpuctl/top-app/cpu.uclamp.latency_sensitive
+    chmod 0660 /dev/cpuctl/top-app/cpu.uclamp.min
+    chmod 0660 /dev/cpuctl/top-app/cpu.uclamp.max
+
+    # Core control
+    chown system system /sys/devices/system/cpu/cpu0/core_ctl/enable
+    chown system system /sys/devices/system/cpu/cpu3/core_ctl/enable
+    chown system system /sys/devices/system/cpu/cpu7/core_ctl/enable
+
+    chown system system /sys/devices/system/cpu/cpu0/core_ctl/min_cpus
+    chown system system /sys/devices/system/cpu/cpu3/core_ctl/min_cpus
+    chown system system /sys/devices/system/cpu/cpu7/core_ctl/min_cpus
+
+    chmod 0660 /sys/devices/system/cpu/cpu0/core_ctl/enable
+    chmod 0660 /sys/devices/system/cpu/cpu3/core_ctl/enable
+    chmod 0660 /sys/devices/system/cpu/cpu7/core_ctl/enable
+
+    chmod 0660 /sys/devices/system/cpu/cpu0/core_ctl/min_cpus
+    chmod 0660 /sys/devices/system/cpu/cpu3/core_ctl/min_cpus
+    chmod 0660 /sys/devices/system/cpu/cpu7/core_ctl/min_cpus
+
+    # Foreground uclamp
+    chown system system /dev/cpuctl/foreground/cpu.uclamp.min
+    chmod 0660 /dev/cpuctl/foreground/cpu.uclamp.min
 
 on boot
     # Disable FB scaling // xiaomi disables it in qti_display_boot scripts
