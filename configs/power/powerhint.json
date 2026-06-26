@@ -1,6 +1,876 @@
 {
     "Nodes": [
+        {
+            "Name": "CPULittleClusterMinFreq",
+            "Path": "/sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq",
+            "Values": [
+                "2016000",
+                "1900800",
+                "1843200",
+                "1708800",
+                "1593600",
+                "1478400",
+                "1344000",
+                "1228800",
+                "1113600",
+                "1017600",
+                "902400",
+                "787200",
+                "595200",
+                "441600",
+                "364800"
+            ],
+            "DefaultIndex": 14,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "CPULittleClusterMaxFreq",
+            "Path": "/sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq",
+            "Values": [
+                "2016000",
+                "1900800",
+                "1843200",
+                "1708800",
+                "1593600",
+                "1478400",
+                "1344000",
+                "1228800",
+                "1113600",
+                "1017600",
+                "902400",
+                "787200",
+                "595200"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "CPUBigClusterMaxFreq",
+            "Path": "/sys/devices/system/cpu/cpufreq/policy3/scaling_max_freq",
+            "Values": [
+                "9999999",
+                "2707200",
+                "2611200",
+                "2572800",
+                "2361600",
+                "2188800",
+                "2073600",
+                "1920000",
+                "1824000",
+                "1708800",
+                "1593600",
+                "1497600",
+                "1401600",
+                "1286400",
+                "1190400",
+                "1056000",
+                "940800",
+                "787200",
+                "633600",
+                "480000"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "CPUBigClusterMinFreq",
+            "Path": "/sys/devices/system/cpu/cpufreq/policy3/scaling_min_freq",
+            "Values": [
+                "9999999",
+                "2707200",
+                "2611200",
+                "2572800",
+                "2361600",
+                "2188800",
+                "2073600",
+                "1920000",
+                "1824000",
+                "1708800",
+                "1593600",
+                "1497600",
+                "1401600",
+                "1286400",
+                "1190400",
+                "1056000",
+                "940800",
+                "787200",
+                "633600",
+                "480000"
+            ],
+            "DefaultIndex": 19,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "CPUBigPlusClusterMinFreq",
+            "Path": "/sys/devices/system/cpu/cpufreq/policy7/scaling_min_freq",
+            "Values": [
+                "9999999",
+                "2918400",
+                "2803200",
+                "2668800",
+                "2457600",
+                "2304000",
+                "2150400",
+                "1900800",
+                "1766400",
+                "1651200",
+                "1459200",
+                "1324800",
+                "1209600",
+                "1094400",
+                "960000",
+                "787200",
+                "633600",
+                "480000"
+            ],
+            "DefaultIndex": 17,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "CPUBigPlusClusterMaxFreq",
+            "Path": "/sys/devices/system/cpu/cpufreq/policy7/scaling_max_freq",
+            "Values": [
+                "9999999",
+                "2918400",
+                "2803200",
+                "2668800",
+                "2457600",
+                "2304000",
+                "2150400",
+                "1900800",
+                "1766400",
+                "1651200",
+                "1459200",
+                "1324800",
+                "1209600",
+                "1094400",
+                "960000"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "CoreCtlMinCoresLittle",
+            "Paths": [
+                "/sys/devices/system/cpu/cpu0/core_ctl/min_cpus"
+            ],
+            "Values": [
+                "1",
+                "3"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "CoreCtlMinCoresPrime",
+            "Paths": [
+                "/sys/devices/system/cpu/cpu7/core_ctl/min_cpus"
+            ],
+            "Values": [
+                "0"
+            ],
+            "ResetOnInit": true
+        },
+        {
+            "Name": "PMQoSCpuDmaLatency",
+            "Paths": [
+                "/dev/cpu_dma_latency"
+            ],
+            "Values": [
+                "1",
+                "44",
+                "67"
+            ],
+            "HoldFd": true
+        },
+        {
+            "Name": "UclampTAMin",
+            "Paths": [
+                "/dev/cpuctl/top-app/cpu.uclamp.min"
+            ],
+            "Values": [
+                "0",
+                "30",
+                "50",
+                "80"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "UclampTALatency",
+            "Paths": [
+                "/dev/cpuctl/top-app/cpu.uclamp.latency_sensitive"
+            ],
+            "Values": [
+                "1",
+                "0"
+            ],
+            "ResetOnInit": true
+        },
+        {
+            "Name": "UclampFGMin",
+            "Paths": [
+                "/dev/cpuctl/foreground/cpu.uclamp.min"
+            ],
+            "Values": [
+                "0",
+                "18",
+                "30"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "SchedMinTaskUtilForBoost",
+            "Paths": [
+                "/proc/sys/walt/sched_min_task_util_for_boost"
+            ],
+            "Values": [
+                "0",
+                "51"
+            ],
+            "ResetOnInit": true
+        },
+        {
+            "Name": "SchedMinTaskUtilForColoc",
+            "Paths": [
+                "/proc/sys/walt/sched_min_task_util_for_colocation"
+            ],
+            "Values": [
+                "0",
+                "35"
+            ],
+            "ResetOnInit": true
+        },
+        {
+            "Name": "SchedMinTaskUtilForUclamp",
+            "Paths": [
+                "/proc/sys/walt/sched_min_task_util_for_uclamp"
+            ],
+            "Values": [
+                "0",
+                "51"
+            ],
+            "ResetOnInit": true
+        },
+        {
+            "Name": "SleepDisabled",
+            "Paths": [
+                "/sys/devices/system/cpu/qcom_lpm/parameters/sleep_disabled"
+            ],
+            "Values": [
+                "0",
+                "1"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "PredictionDisabled",
+            "Paths": [
+                "/sys/devices/system/cpu/qcom_lpm/parameters/prediction_disabled"
+            ],
+            "Values": [
+                "0",
+                "1"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "_proc_sys_walt_sched_boost",
+            "Paths": [
+                "/proc/sys/walt/sched_boost"
+            ],
+            "Values": [
+                "0",
+                "1",
+                "2"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true,
+            "Optional": true
+        },
+        {
+            "Name": "_proc_sys_walt_sched_busy_hyst_ns",
+            "Paths": [
+                "/proc/sys/walt/sched_busy_hyst_ns"
+            ],
+            "Values": [
+                "0",
+                "10000000",
+                "12000000",
+                "15000000"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true,
+            "Optional": true
+        },
+        {
+            "Name": "_proc_sys_walt_sched_busy_hysteresis_enable_cpus",
+            "Paths": [
+                "/proc/sys/walt/sched_busy_hysteresis_enable_cpus"
+            ],
+            "Values": [
+                "0",
+                "248"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true,
+            "Optional": true
+        },
+        {
+            "Name": "_proc_sys_walt_sched_downmigrate",
+            "Paths": [
+                "/proc/sys/walt/sched_downmigrate"
+            ],
+            "Values": [
+                "65 85",
+                "10 85",
+                "45 60",
+                "70 85",
+                "50 65",
+                "75 90"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true,
+            "Optional": true,
+            "WriteOnly": true
+        },
+        {
+            "Name": "_proc_sys_walt_sched_idle_enough",
+            "Paths": [
+                "/proc/sys/walt/sched_idle_enough"
+            ],
+            "Values": [
+                "30",
+                "0"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true,
+            "Optional": true
+        },
+        {
+            "Name": "_proc_sys_walt_sched_upmigrate",
+            "Paths": [
+                "/proc/sys/walt/sched_upmigrate"
+            ],
+            "Values": [
+                "95 95",
+                "50 85",
+                "60 75",
+                "85 95",
+                "60 85",
+                "70 90",
+                "90 100"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true,
+            "Optional": true,
+            "WriteOnly": true
+        },
+        {
+            "Name": "_sys_devices_system_cpu_bus_dcvs_DDR_24091000.qcom,bwmon_ddr_hist_memory",
+            "Paths": [
+                "/sys/devices/system/cpu/bus_dcvs/DDR/24091000.qcom,bwmon-ddr/hist_memory"
+            ],
+            "Values": [
+                "20",
+                "0"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "_sys_devices_system_cpu_bus_dcvs_DDR_24091000.qcom,bwmon_ddr_hyst_length",
+            "Paths": [
+                "/sys/devices/system/cpu/bus_dcvs/DDR/24091000.qcom,bwmon-ddr/hyst_length"
+            ],
+            "Values": [
+                "0"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "_sys_devices_system_cpu_bus_dcvs_DDR_24091000.qcom,bwmon_ddr_hyst_trigger_count",
+            "Paths": [
+                "/sys/devices/system/cpu/bus_dcvs/DDR/24091000.qcom,bwmon-ddr/hyst_trigger_count"
+            ],
+            "Values": [
+                "3",
+                "0"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "_sys_devices_system_cpu_bus_dcvs_DDR_24091000.qcom,bwmon_ddr_io_percent",
+            "Paths": [
+                "/sys/devices/system/cpu/bus_dcvs/DDR/24091000.qcom,bwmon-ddr/io_percent"
+            ],
+            "Values": [
+                "80",
+                "100"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "_sys_devices_system_cpu_bus_dcvs_DDR_24091000.qcom,bwmon_ddr_min_freq",
+            "Paths": [
+                "/sys/devices/system/cpu/bus_dcvs/DDR/24091000.qcom,bwmon-ddr/min_freq"
+            ],
+            "Values": [
+                "547000",
+                "681000",
+                "800000",
+                "1000000",
+                "1555000"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "_sys_devices_system_cpu_bus_dcvs_DDR_24091000.qcom,bwmon_ddr_sample_ms",
+            "Paths": [
+                "/sys/devices/system/cpu/bus_dcvs/DDR/24091000.qcom,bwmon-ddr/sample_ms"
+            ],
+            "Values": [
+                "4",
+                "16",
+                "33"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "_sys_devices_system_cpu_bus_dcvs_LLCC_240b7400.qcom,bwmon_llcc_hist_memory",
+            "Paths": [
+                "/sys/devices/system/cpu/bus_dcvs/LLCC/240b7400.qcom,bwmon-llcc/hist_memory"
+            ],
+            "Values": [
+                "20",
+                "0"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "_sys_devices_system_cpu_bus_dcvs_LLCC_240b7400.qcom,bwmon_llcc_hyst_length",
+            "Paths": [
+                "/sys/devices/system/cpu/bus_dcvs/LLCC/240b7400.qcom,bwmon-llcc/hyst_length"
+            ],
+            "Values": [
+                "0"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "_sys_devices_system_cpu_bus_dcvs_LLCC_240b7400.qcom,bwmon_llcc_hyst_trigger_count",
+            "Paths": [
+                "/sys/devices/system/cpu/bus_dcvs/LLCC/240b7400.qcom,bwmon-llcc/hyst_trigger_count"
+            ],
+            "Values": [
+                "3",
+                "0"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "_sys_devices_system_cpu_bus_dcvs_LLCC_240b7400.qcom,bwmon_llcc_io_percent",
+            "Paths": [
+                "/sys/devices/system/cpu/bus_dcvs/LLCC/240b7400.qcom,bwmon-llcc/io_percent"
+            ],
+            "Values": [
+                "80",
+                "100"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "_sys_devices_system_cpu_bus_dcvs_LLCC_240b7400.qcom,bwmon_llcc_max_freq",
+            "Paths": [
+                "/sys/devices/system/cpu/bus_dcvs/LLCC/240b7400.qcom,bwmon-llcc/max_freq"
+            ],
+            "Values": [
+                "1066000",
+                "933000"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "_sys_devices_system_cpu_bus_dcvs_LLCC_240b7400.qcom,bwmon_llcc_sample_ms",
+            "Paths": [
+                "/sys/devices/system/cpu/bus_dcvs/LLCC/240b7400.qcom,bwmon-llcc/sample_ms"
+            ],
+            "Values": [
+                "4",
+                "16",
+                "33"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "_sys_devices_system_cpu_cpu0_cpufreq_walt_hispeed_freq",
+            "Paths": [
+                "/sys/devices/system/cpu/cpu0/cpufreq/walt/hispeed_freq"
+            ],
+            "Values": [
+                "1113600",
+                "787200"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true,
+            "Optional": true
+        },
+        {
+            "Name": "_sys_devices_system_cpu_cpu0_cpufreq_walt_hispeed_load",
+            "Paths": [
+                "/sys/devices/system/cpu/cpu0/cpufreq/walt/hispeed_load"
+            ],
+            "Values": [
+                "90",
+                "99"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true,
+            "Optional": true
+        },
+        {
+            "Name": "_sys_devices_system_cpu_cpu0_cpufreq_walt_pl",
+            "Paths": [
+                "/sys/devices/system/cpu/cpu0/cpufreq/walt/pl"
+            ],
+            "Values": [
+                "0"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true,
+            "Optional": true
+        },
+        {
+            "Name": "_sys_devices_system_cpu_cpu0_cpufreq_walt_rtg_boost_freq",
+            "Paths": [
+                "/sys/devices/system/cpu/cpu0/cpufreq/walt/rtg_boost_freq"
+            ],
+            "Values": [
+                "595200",
+                "0"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true,
+            "Optional": true
+        },
+        {
+            "Name": "_sys_devices_system_cpu_dynpf_enable_dynpf",
+            "Paths": [
+                "/sys/devices/system/cpu/dynpf/enable_dynpf"
+            ],
+            "Values": [
+                "0",
+                "1"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "GPUMaxFreq",
+            "Paths": [
+                "/sys/class/kgsl/kgsl-3d0/devfreq/max_freq"
+            ],
+            "Values": [
+                "1100000000",
+                "1000000000",
+                "950000000",
+                "900000000",
+                "835000000",
+                "736000000",
+                "684000000",
+                "633000000",
+                "500000000",
+                "353000000",
+                "255000000"
+            ],
+            "DefaultIndex": 3,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "GPUMinFreq",
+            "Paths": [
+                "/sys/class/kgsl/kgsl-3d0/devfreq/min_freq"
+            ],
+            "Values": [
+                "1100000000",
+                "1000000000",
+                "950000000",
+                "900000000",
+                "835000000",
+                "736000000",
+                "684000000",
+                "633000000",
+                "500000000",
+                "353000000",
+                "255000000"
+            ],
+            "DefaultIndex": 10,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "GPUIdleTimer",
+            "Paths": [
+                "/sys/class/kgsl/kgsl-3d0/idle_timer"
+            ],
+            "Values": [
+                "10000",
+                "58",
+                "40",
+                "20"
+            ],
+            "DefaultIndex": 2,
+            "ResetOnInit": true
+        }
     ],
     "Actions": [
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "CPULittleClusterMinFreq",
+            "Duration": 2000,
+            "Value": "1843200"
+        },
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "CPUBigClusterMinFreq",
+            "Duration": 2000,
+            "Value": "2073600"
+        },
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "CPUBigPlusClusterMinFreq",
+            "Duration": 2000,
+            "Value": "1900800"
+        },
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "_proc_sys_walt_sched_boost",
+            "Value": "1",
+            "Duration": 2000
+        },
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "_sys_devices_system_cpu_bus_dcvs_DDR_24091000.qcom,bwmon_ddr_min_freq",
+            "Value": "1555000",
+            "Duration": 900
+        },
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "PMQoSCpuDmaLatency",
+            "Value": "44",
+            "Duration": 600
+        },
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "UclampTAMin",
+            "Value": "50",
+            "Duration": 1500
+        },
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "GPUIdleTimer",
+            "Value": "10000",
+            "Duration": 1000
+        },
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "GPUMinFreq",
+            "Value": "353000000",
+            "Duration": 2000
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "CPULittleClusterMinFreq",
+            "Duration": 1000,
+            "Value": "1478400"
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "CPUBigClusterMinFreq",
+            "Duration": 1000,
+            "Value": "1920000"
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "CPUBigPlusClusterMinFreq",
+            "Duration": 1000,
+            "Value": "1651200"
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "_proc_sys_walt_sched_boost",
+            "Value": "1",
+            "Duration": 183
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "_sys_devices_system_cpu_bus_dcvs_DDR_24091000.qcom,bwmon_ddr_min_freq",
+            "Value": "800000",
+            "Duration": 183
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "_proc_sys_walt_sched_busy_hysteresis_enable_cpus",
+            "Value": "248",
+            "Duration": 120
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "_proc_sys_walt_sched_busy_hyst_ns",
+            "Value": "10000000",
+            "Duration": 120
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "_proc_sys_walt_sched_upmigrate",
+            "Value": "70 90",
+            "Duration": 120
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "_proc_sys_walt_sched_downmigrate",
+            "Value": "45 60",
+            "Duration": 120
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "SchedMinTaskUtilForColoc",
+            "Value": "35",
+            "Duration": 120
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "SchedMinTaskUtilForBoost",
+            "Value": "51",
+            "Duration": 120
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "_sys_devices_system_cpu_bus_dcvs_LLCC_240b7400.qcom,bwmon_llcc_max_freq",
+            "Value": "1066000",
+            "Duration": 120
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "GPUMinFreq",
+            "Value": "255000000",
+            "Duration": 120
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "GPUIdleTimer",
+            "Value": "58",
+            "Duration": 120
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "UclampTAMin",
+            "Value": "30",
+            "Duration": 149
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "UclampFGMin",
+            "Value": "18",
+            "Duration": 149
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "UclampTALatency",
+            "Value": "1",
+            "Duration": 120
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "PMQoSCpuDmaLatency",
+            "Value": "67",
+            "Duration": 120
+        },
+        {
+            "PowerHint": "INTERACTIVE",
+            "Node": "SleepDisabled",
+            "Duration": 1000,
+            "Value": "1"
+        },
+        {
+            "PowerHint": "INTERACTIVE",
+            "Node": "PredictionDisabled",
+            "Duration": 1000,
+            "Value": "1"
+        },
+        {
+            "PowerHint": "DISPLAY_INACTIVE",
+            "Node": "GPUMaxFreq",
+            "Value": "255000000",
+            "Duration": 0
+        },
+        {
+            "PowerHint": "DISPLAY_INACTIVE",
+            "Node": "GPUIdleTimer",
+            "Value": "40",
+            "Duration": 0
+        },
+        {
+            "PowerHint": "DISPLAY_INACTIVE",
+            "Node": "CoreCtlMinCoresLittle",
+            "Value": "1",
+            "Duration": 0
+        },
+        {
+            "PowerHint": "DISPLAY_INACTIVE",
+            "Node": "CoreCtlMinCoresPrime",
+            "Value": "0",
+            "Duration": 0
+        },
+        {
+            "PowerHint": "DISPLAY_INACTIVE",
+            "Node": "_proc_sys_walt_sched_boost",
+            "Value": "0",
+            "Duration": 0
+        },
+        {
+            "PowerHint": "DISPLAY_INACTIVE",
+            "Node": "_proc_sys_walt_sched_busy_hysteresis_enable_cpus",
+            "Value": "0",
+            "Duration": 0
+        },
+        {
+            "PowerHint": "DISPLAY_INACTIVE",
+            "Node": "SleepDisabled",
+            "Value": "0",
+            "Duration": 0
+        },
+        {
+            "PowerHint": "DISPLAY_INACTIVE",
+            "Node": "PredictionDisabled",
+            "Value": "0",
+            "Duration": 0
+        },
+        {
+            "PowerHint": "DISPLAY_INACTIVE",
+            "Node": "_sys_devices_system_cpu_bus_dcvs_DDR_24091000.qcom,bwmon_ddr_sample_ms",
+            "Value": "33",
+            "Duration": 0
+        },
+        {
+            "PowerHint": "DISPLAY_INACTIVE",
+            "Node": "_sys_devices_system_cpu_bus_dcvs_LLCC_240b7400.qcom,bwmon_llcc_sample_ms",
+            "Value": "33",
+            "Duration": 0
+        }
     ]
 }
