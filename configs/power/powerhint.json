@@ -915,6 +915,41 @@
             "Node": "GPUMinFreq",
             "Duration": 0,
             "Value": "353000000"
+        },
+        {
+            "PowerHint": "GAME",
+            "Type": "EndHint",
+            "Value": "INTERACTION"
+        },
+        {
+            "PowerHint": "GAME",
+            "Node": "CPULittleClusterMinFreq",
+            "Duration": 0,
+            "Value": "1843200"
+        },
+        {
+            "PowerHint": "GAME",
+            "Node": "CPUBigClusterMinFreq",
+            "Duration": 0,
+            "Value": "2611200"
+        },
+        {
+            "PowerHint": "GAME",
+            "Node": "CPUBigPlusClusterMinFreq",
+            "Duration": 0,
+            "Value": "2668800"
+        },
+        {
+            "PowerHint": "GAME",
+            "Node": "GPUMinFreq",
+            "Duration": 0,
+            "Value": "255000000"
+        },
+        {
+            "PowerHint": "GAME",
+            "Node": "UclampTAMin",
+            "Duration": 0,
+            "Value": "80"
         }
     ]
 }
