@@ -4,6 +4,6 @@
 //
 
 runtime_resource_overlay {
-    name: "LineageSDKOverlayPeridot",
-    product_specific: true,
+    name: "AlphaSettingsOverlayPeridot",
+    system_ext_specific: true,
 }
