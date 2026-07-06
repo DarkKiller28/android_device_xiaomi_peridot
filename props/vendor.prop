@@ -40,6 +40,9 @@ vendor.audio_hal.period_size=192
 vendor.qc2audio.per_frame.flac.dec.enabled=true
 vendor.qc2audio.suspend.enabled=true
 
+# ADPF CPU HINT
+debug.sf.enable_adpf_cpu_hint=true
+
 # Bluetooth
 bluetooth.profile.asha.central.enabled=true
 bluetooth.profile.bap.broadcast.assist.enabled=true
