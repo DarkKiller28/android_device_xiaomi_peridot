@@ -37,6 +37,7 @@
      <!-- Performance Mode Notification -->
      <string name="perf_mode_title">Performance Mode</string>
      <string name="perf_mode_notification">Performance mode is active. Tap to open settings.</string>
+     <string name="gaming_mode_notification">Gaming mode is active. Tap to open settings.</string>
 
      <!-- Tile Disabled -->
      <string name="power_tile_disabled_subtitle">Disabled</string>
