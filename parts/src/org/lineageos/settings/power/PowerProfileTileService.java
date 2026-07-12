@@ -46,7 +46,7 @@ public class PowerProfileTileService extends TileService {
         DEFAULT(0, R.string.powerprofile_default, R.drawable.ic_power_default, "1"),
         BATTERY(1, R.string.powerprofile_battery, R.drawable.ic_power_battery_saver, "0"),
         PERFORMANCE(6, R.string.powerprofile_performance, R.drawable.ic_power_performance, "2"),
-        GAMING(18, R.string.powerprofile_gaming, R.drawable.ic_power_performance, "3"),
+        GAMING(18, R.string.powerprofile_gaming, R.drawable.ic_power_gaming, "3"),
         UNKNOWN(-1, R.string.powerprofile_unknown, R.drawable.ic_power_default, "1");
 
         private final int value;
@@ -309,10 +309,14 @@ public class PowerProfileTileService extends TileService {
             this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
         );
 
+        int contentTextResId = profile == PowerProfile.GAMING
+                ? R.string.gaming_mode_notification
+                : R.string.perf_mode_notification;
+
         Notification notification = new Notification.Builder(this, TAG)
             .setContentTitle(getString(profile.getNameResId()))
-            .setContentText(getString(R.string.perf_mode_notification))
-            .setSmallIcon(R.drawable.ic_power_performance)
+            .setContentText(getString(contentTextResId))
+            .setSmallIcon(profile.getIconResId())
             .setContentIntent(pendingIntent)
             .setOngoing(true)
             .build();
