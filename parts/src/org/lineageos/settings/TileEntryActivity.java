@@ -28,11 +28,17 @@ import androidx.annotation.Nullable;
 
 import org.lineageos.settings.refreshrate.RefreshActivity;
 import org.lineageos.settings.saturation.SaturationActivity;
+import org.lineageos.settings.touchsampling.TouchSamplingSettingsActivity;
 
 public class TileEntryActivity extends Activity {
     private static final String TAG = "TileEntryActivity";
     private static final String REFRESH_TILE = "org.lineageos.settings.refreshrate.RefreshTileService";
     private static final String SATURATION_TILE = "org.lineageos.settings.saturation.SaturationTileService";
+    private static final String TOUCH_SAMPLING_TILE = "org.lineageos.settings.touchsampling.TouchSamplingTileService";
+    // NOTE: ChargeTileService and PowerProfileTileService are pure cycle-toggle tiles
+    // (onClick() just advances state) with no dedicated settings screen in this app yet.
+    // Long-pressing them will correctly fall through to "Unknown tile" below until/unless
+    // a settings screen is added for them.
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,6 +57,8 @@ public class TileEntryActivity extends Activity {
             intent = new Intent(this, RefreshActivity.class);
         } else if (SATURATION_TILE.equals(sourceClassName)) {
             intent = new Intent(this, SaturationActivity.class);
+        } else if (TOUCH_SAMPLING_TILE.equals(sourceClassName)) {
+            intent = new Intent(this, TouchSamplingSettingsActivity.class);
         } else {
             Log.e(TAG, "Unknown tile: " + sourceClassName);
             finish();
