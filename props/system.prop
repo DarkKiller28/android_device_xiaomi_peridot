@@ -20,3 +20,6 @@ ro.mot.eri.losalert.delay=1000
 # Optimizer
 persist.sys.perf.scroll_opt=true
 persist.sys.perf.scroll_opt.heavy_app=2
+
+# Kawase2 Render Engine Blur Algorithm
+debug.renderengine.blur_algorithm=kawase2
