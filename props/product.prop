@@ -24,5 +24,12 @@ bluetooth.profile.opp.enabled=true
 bluetooth.profile.pbap.server.enabled=true
 bluetooth.profile.vcp.controller.enabled=false
 
+# IORapd
+iorapd.perfetto.enable=false
+iorapd.readahead.enable=false
+persist.device_config.runtime_native_boot.iorap_readahead_enable=false
+ro.iorapd.enable=false
+
 # Media
 media.stagefright.audio.deep=true
+
