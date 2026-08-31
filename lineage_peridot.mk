@@ -30,3 +30,15 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     DeviceProduct=$(PRODUCT_SYSTEM_NAME)
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
+
+# Maintainer Flag
+RISING_MAINTAINER="ℝ𝕖𝕧𝕖𝕣𝕤𝕖𝕕ℝ𝕦𝕝𝕖𝕣༆𖣘(Soner)"
+
+# Rising Stuff
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    RisingChipset="Snapdragon® 8s Gen 3" \
+    RisingMaintainer="ℝ𝕖𝕧𝕖𝕣𝕤𝕖𝕕ℝ𝕦𝕝𝕖𝕣༆𖣘(Soner)"
+
+# Some flags
+TARGET_ENABLE_BLUR := true
+WITH_GMS := true
