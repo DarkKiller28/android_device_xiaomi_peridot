@@ -30,3 +30,21 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     DeviceProduct=$(PRODUCT_SYSTEM_NAME)
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
+
+# Camera information (multiple sensors supported)
+AXION_CAMERA_REAR_INFO := 50,8
+AXION_CAMERA_FRONT_INFO := 20
+
+# Maintainer name (underscores become spaces in the UI)
+AXION_MAINTAINER := ℝ𝕖𝕧𝕖𝕣𝕤𝕖𝕕ℝ𝕦𝕝𝕖𝕣༆𖣘(Soner)
+
+# Processor name (underscores become spaces)
+AXION_PROCESSOR := Snapdragon_8S_Gen_3
+
+# Axion Stuff
+TARGET_DISABLE_EPPE := true
+TARGET_INCLUDE_AXFX := true
+TARGET_DOZE_TAP_PULSE_SUPPORTED := true
+TARGET_DOZE_DOUBLE_TAP_PULSE_SUPPORTED := true
+TARGET_INCLUDE_GOOGLE_TELECOMM := true
+TARGET_INCLUDE_PARTNER_SETUP := true
