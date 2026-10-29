@@ -514,6 +514,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/thermal/thermal-engine.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf
 
+# Thermal Profiles
+TARGET_USE_THERMALPROFILES := true
+
 # Update engine
 PRODUCT_PACKAGES += \
     update_engine \
